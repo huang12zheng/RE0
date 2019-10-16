@@ -32,7 +32,10 @@ sudo apt-get install build-essential
     ```bash
 
     ```
-    
+  - [ ] SSR[ ShadowsocksX-NG-R8 ]
+    ```
+    服务器--->>二维码
+    ```
 ```bash
 sudo apt-get install git
 sudo apt-get install aptitude
@@ -66,7 +69,7 @@ allprojects{
     }
 }
   ```
-4. virtualbox--8h
+4. virtualbox--8h  <font color=red>失败</font>
  - [x] MAC
 https://zhuanlan.zhihu.com/p/47707748
 ```bash

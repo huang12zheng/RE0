@@ -17,10 +17,25 @@ coding is article,which is to make you know something .Then, how to writing it?
  > M V VM
  1. M is data layer,
  2. V is What user look.
- 3. VM is including some method to change M, and 
+ 3. VM is including some method to change M, 
+   BusinessLogic and UILogic, it can use in many place.
 
- >> MVP
+ > MVP
   P is business layer, which is change data of M, and get data of M,
-  interface of V is IV,which send event to P, and P change M. M changed, and V is depending by P with data of model, then V is change. 
+  <font color=red>interface</font> of V is IV,which send event to P, and P change M. M changed, and V is depending by P with data of model, then V is change. 
 
   Moreover, how V to get a P without too many time init. Provider. P with Steam, which I think is a clone of Model.
+## some thing important
+* stream
+    - The pipe is the Stream and the water is the asynchronous data
+    - how to write a stream?
+    ```dart
+    Stream<int> countStream(int max) async* {
+        for (int i = 0; i < max; i++) {
+            yield i;
+        }
+    }
+    ```
+* bloc
+    - it is a component which converts a Stream of incoming `Events` into a Stream of outgoing `States`
+    https://felangel.github.io/bloc/#/architecture?id=data-layer
