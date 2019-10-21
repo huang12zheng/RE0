@@ -10,7 +10,7 @@ WV is veiw of `relationship` of world and people. Mehod is from WV,which is to r
 Essence of people is work and why you work. 
 > it is with `relationship`.
 
-What's relationship about would and I?
+What's relationship about world and I?
 1. Do you carry what Other people think of you?
 2. What you want to do?
 3. How to do it?
@@ -19,8 +19,8 @@ What's relationship about would and I?
 * Long-term goals
 Frontend experts, Arithmetic experts, Know domain experts
 
-1. `why`  money, view of people, ...
-2. why dislike? it is overtime, it is dismatch with view of you.
+1. `why` is that money, view of people, ...
+2. why something is dislike? it is overtime, it is dismatch with view of you.
  AE is diffcult.
 > So Software experts is better than FE,AE.
 * indicators
