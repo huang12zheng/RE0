@@ -1,0 +1,6 @@
+endpoint: http://122.51.89.245:4466
+datamodel: datamodel.prisma
+
+generate:
+  - generator: typescript-client
+    output: ./generated/prisma-client/

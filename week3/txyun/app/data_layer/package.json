@@ -1,0 +1,15 @@
+{
+  "name": "data_layer",
+  "version": "1.0.0",
+  "description": "a backend prisma data_layer",
+  "main": "index.js",
+  "dependencies": {
+    "prisma-client-lib": "^1.34.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "hz",
+  "license": "ISC"
+}

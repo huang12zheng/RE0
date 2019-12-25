@@ -13,6 +13,7 @@ sudo apt update && sudo apt dist-upgrade && sudo apt autoremove
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install build-essential
+do-release-upgrade
 ```
 2. download software
   - [x] chrome  -10min
@@ -36,6 +37,9 @@ sudo apt-get install build-essential
   - [ ] SSR[ ShadowsocksX-NG-R8 ]
     ```
     服务器--->>二维码
+  - [ ] https://www.lanzous.com/i6qjjte Charles mac
+  - [ ] 后端运行起来
+  - [ ] 后端代码
     ```
 ```bash
 sudo apt-get install git
@@ -94,7 +98,7 @@ RVM
 ruby
 3.pod
 4.检查
-5
+5.pgAdmin 4
 ```bash
 # 添加 TUNA 源并移除默认源
 gem sources --add https://mirrors.tuna.tsinghua.edu.cn/rubygems/ --remove https://rubygems.org/
@@ -145,3 +149,4 @@ pod install --verbose --no-repo-update
 ```
 No podspec found for `Flutter` in `.symlinks/flutter/ios
 ```
+

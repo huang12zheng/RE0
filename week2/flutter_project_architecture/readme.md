@@ -59,3 +59,21 @@ digraph{
 uiState is a part of component, and it would change by something. 
 I think it is just a data.so using inherited, make data up.
 2. 
+
+```dart
+  void _initState(Action action, Context<FollowState> ctx) {
+    listen = EventBusUtil.instance.eventBus
+        .on<RefreshFoundMainList>()
+        .listen((event) {
+      ctx.state.refreshKey.currentState.handleRefresh();
+    });
+    ctx.state.groupList = _getJoinGroup();
+  }
+```
+
+=>
+
+EVENT=>UIBloc=>UIsm in List
+
+item ()
+renderArticleItem=> many function
