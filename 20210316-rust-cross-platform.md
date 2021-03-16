@@ -24,7 +24,7 @@
 从 https://github.com/brickpop/flutter-rust-ffi/blob/master/rust/makefile#L1-L111 
 中知道了:
   + 知识点1.1
-    ANDROID 这两个应该是宏, 编译器, 链接器.
+    ANDROID 这两个应该是宏, 编译器, 链接器.  《《《请问,这个对不对呢?
   + 知识点1.2
     IOS 用 cargo lipo
 ```makefile
