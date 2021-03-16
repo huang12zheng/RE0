@@ -1,4 +1,6 @@
 * 问题1  darwin linux windows需要的是什么链接器?比如在mac上.
+  
+  原因是下面的知识点1
 
   找到的一些资料: https://moevis.github.io/cheatsheet/2018/08/18/%E8%B6%85%E6%96%B9%E4%BE%BF%E7%9A%84-Rust-%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91.html
 
