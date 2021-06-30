@@ -1,0 +1,15 @@
+# https://blog.csdn.net/sinolover/article/details/94380049
+- hosts: ubuntu
+  become: true
+  tasks:
+    - name: isDebExist
+      shell: test -f /tmp/google-chrome-stable_current_amd64.deb || echo true
+      register: isDebNoExist
+    - name: install chrome
+      shell: |
+        [ -n "`ps aux | grep clash | grep '\-d'`" ] && export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
+        wget -P /tmp https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        sudo dpkg -i /tmp/google-chrome-stable_current_amd64.deb
+        # /usr/bin/chrome
+        # sudo dpkg -i google-chrome*; sudo apt-get -f install 
+      when: isDesktop and isDebNoExist.stdout == "true"

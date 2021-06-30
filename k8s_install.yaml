@@ -1,0 +1,48 @@
+#https://microk8s.io/docs/configuring-services
+#https://zhuanlan.zhihu.com/p/359719736
+- hosts: ubuntu
+  tasks:
+    # - name: install microk8s
+    #   shell: |
+    #     apt update
+    #     apt upgrade
+    #     snap install microk8s --classic
+    #     usermod -a -G microk8s $USER
+    #     microk8s.status --wait-ready
+    #     # alias k='microk8s.kubectl'
+    #     # sudo microk8s enable dns dashboard
+    #     microk8s.enable dashboard dns ingress istio registry storage helm3
+
+    #     ### some manage command
+    #     # microk8s.inspect 排查下安装部署结果
+    #     # microk8s leave
+    #     # microk8s kubectl drain <node> --ignore-daemonsets
+    #     # microk8s remove-node <node> #3 if node is crash
+
+    #     # microk8s add-node ## run will be the master of the cluster,if all have mircok8s
+    #     # https://zhuanlan.zhihu.com/p/81648464
+    - name: apt update
+      become: true
+      apt:
+        update_cache: yes
+        upgrade: yes
+    - name: snap install k8s
+      become: true
+      snap:
+        name: microk8s
+        classic: yes
+        # channel: 1.21
+        # cmd: |
+    - name: set containerd
+    #   lineinfile:
+    #     path: /etc/selinux/config
+    #     regexp: '^sandbox_image ='
+    #     line: sandbox_image = "registry.cn-hangzhou.aliyuncs.com/google_containers/pause:3.1"
+      become: true
+      shell: |
+        sudo usermod -a -G microk8s {{ansible_ssh_user}}
+        sudo chown -f -R {{ansible_ssh_user}} ~/.kube
+        sed -i "s#k8s.gcr.io#registry.cn-hangzhou.aliyuncs.com/google_containers#g"  /var/snap/microk8s/current/args/containerd-template.toml
+        sed -i "s#https://registry-1.docker.io#https://registry.cn-hangzhou.aliyuncs.com#g"  /var/snap/microk8s/current/args/containerd-template.toml
+        systemctl restart snap.microk8s.daemon-containerd.service
+          

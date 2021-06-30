@@ -1,0 +1,16 @@
+- hosts: ubuntu
+  tasks:
+    - name: template clash
+      template:
+        src: templates/clash.sh.j2
+        dest: /tmp/clash.sh
+    - name: install clash
+      shell: echo {{ansible_sudo_pass}}|bash /tmp/clash.sh
+    - name: start clash
+      shell: |
+        set +e
+        isRun=`ps aux | grep clash | grep '\-d'`
+        set -e
+        # [ -n "$isRun" ] && export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
+        [ -n "$isRun" ] || /home/ubuntu/clash/clash /home/ubuntu/clash -d
+        [ -n "$isRun" ] || sleep 30
