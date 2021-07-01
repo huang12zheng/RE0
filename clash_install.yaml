@@ -1,16 +1,33 @@
 - hosts: ubuntu
   tasks:
+    - name: check version
+      shell: cat /tmp/clash.sh| grep '{{clash_url}}' ||echo OLD_VERSION
+      register: versionInfo
+    - name: rm file
+      shell: |
+        rm /home/ubuntu/clash/clash
+        rm /home/ubuntu/clash/config.yaml
+        rm /home/ubuntu/clash/Country.mmdb
+      when: versionInfo.stdout == "OLD_VERSION"
+      ignore_errors: true
     - name: template clash
       template:
         src: templates/clash.sh.j2
         dest: /tmp/clash.sh
+      when: versionInfo.stdout == "OLD_VERSION"
     - name: install clash
       shell: echo {{ansible_sudo_pass}}|bash /tmp/clash.sh
+      when: versionInfo.stdout == "OLD_VERSION"
+    - name: kill clash
+      become: true
+      shell: ps aux | grep clash | grep '\-d'|grep -v grep|awk '{print "sudo kill "$2}'|bash
+      when: versionInfo.stdout == "OLD_VERSION"
     - name: start clash
       shell: |
         set +e
-        isRun=`ps aux | grep clash | grep '\-d'`
+        isRun=`ps aux | grep clash | grep '\-d'|grep -v grep`
         set -e
+        echo "$isRun"
         # [ -n "$isRun" ] && export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
-        [ -n "$isRun" ] || /home/ubuntu/clash/clash /home/ubuntu/clash -d
-        [ -n "$isRun" ] || sleep 30
+        [ -n "$isRun" ] || /home/ubuntu/clash/clash /home/ubuntu/clash -d &
+        # [ -n "$isRun" ] || sleep 30

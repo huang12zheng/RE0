@@ -45,4 +45,8 @@
         sed -i "s#k8s.gcr.io#registry.cn-hangzhou.aliyuncs.com/google_containers#g"  /var/snap/microk8s/current/args/containerd-template.toml
         sed -i "s#https://registry-1.docker.io#https://registry.cn-hangzhou.aliyuncs.com#g"  /var/snap/microk8s/current/args/containerd-template.toml
         systemctl restart snap.microk8s.daemon-containerd.service
-          
+    - name: proxy https
+      lineinfile:
+        path: /var/snap/microk8s/current/args/containerd-env
+        regexp: 'HTTPS_PROXY='
+        line: 'HTTPS_PROXY=http://127.0.0.1:7890'
