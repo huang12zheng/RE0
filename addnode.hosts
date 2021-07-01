@@ -1,0 +1,18 @@
+[master:vars]
+ansible_sudo_pass='chia'
+ansible_ssh_pass='chia'
+ansible_ssh_user='chia'
+
+[node:vars]
+ansible_sudo_pass='prisma'
+ansible_ssh_pass='prisma'
+ansible_ssh_user='c6'
+
+[master]
+192.168.14.149
+
+[node]
+# 172.16.27.31
+172.16.27.32
+172.16.27.33
+172.16.27.35

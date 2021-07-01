@@ -1,0 +1,3 @@
+- import_playbook: clash_install.yaml
+- import_playbook: ohmyzsh_install.yaml
+- import_playbook: k8s_install.yaml

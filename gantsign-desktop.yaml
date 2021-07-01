@@ -9,6 +9,14 @@
 - import_playbook: clash_install.yaml
 - import_playbook: chrome_install.yaml
 - hosts: ubuntu
+  tasks:
+    name: snap proxy
+    lineinfile:
+      dest: /etc/profile
+      line: export SYSTEMD_EDITOR="/bin/vim"
+    shell: sudo systemctl restart snapd
+
+- hosts: ubuntu
   roles:
     - role: gantsign.git_user
       users:
@@ -23,6 +31,7 @@
   tasks:
     - name: .bashrc set
       blockinfile:
+        marker: "# {mark} CHIA BLOCK"
         dest: /home/{{ansible_ssh_user}}/.zshrc
         block: |
           # . /home/{{ansible_ssh_user}}/.bashrc

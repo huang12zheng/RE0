@@ -1,0 +1,22 @@
+# - hosts: master
+#   tasks:
+#   - name:
+#     shell: |
+#       flag=`date +%Y%m%d%H%M`
+#       microk8s add-node -l 3600| head -n 2 | tail -n 1 >/tmp/token$flag
+#       # echo /tmp/token$flag
+#       cat /tmp/token$flag
+#     register: token
+#   - name:  SET FACT TOKEN
+#     debug:
+#       msg: "{{token}}"
+
+- hosts: node
+  vars:
+    
+    token: microk8s join 192.168.14.149:25000/3be754719f26df2f94f280075dc7a3e8/be234ae6ee9e &
+  tasks:
+  - name: add to master
+    become: true
+    # shell: echo {{token}}
+    shell: {{token}}

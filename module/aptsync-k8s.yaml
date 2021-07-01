@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aptsync
+spec:
+  selector:
+    matchLabels:
+      app: aptsync
+  template:
+    metadata:
+      labels:
+        app: aptsync
+    spec:
+      containers:
+        - name: aptsync
+          image: ustcmirror/aptsync
+          imagePullPolicy: IfNotPresent
+          # ports:
+          # - containerPort: 6379
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: aptsync
+spec:
+  # type: NodePort
+  ports:
+  - port: 32001
+    protocol: TCP
+    targetPort: 443
+  selector:
+    app: aptsync
+  type: ClusterIP

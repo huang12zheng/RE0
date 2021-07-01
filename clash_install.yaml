@@ -22,12 +22,24 @@
       become: true
       shell: ps aux | grep clash | grep '\-d'|grep -v grep|awk '{print "sudo kill "$2}'|bash
       when: versionInfo.stdout == "OLD_VERSION"
-    - name: start clash
-      shell: |
-        set +e
-        isRun=`ps aux | grep clash | grep '\-d'|grep -v grep`
-        set -e
-        echo "$isRun"
-        # [ -n "$isRun" ] && export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
-        [ -n "$isRun" ] || /home/ubuntu/clash/clash /home/ubuntu/clash -d &
-        # [ -n "$isRun" ] || sleep 30
+    - name: start clash Synchronize
+      synchronize:
+        src: templates/clash_cron/
+        dest: /tmp/clash_cron/
+    - name: start clash Cron
+      shell: crontab /tmp/clash_cron/cron_clash
+    - blockinfile:
+        marker: "# {mark} CLASH PROXY BLOCK"
+        dest: /etc/environment 
+        block: |
+          HTTP_PROXY=http://127.0.0.1:7890
+          HTTPS_PROXY=http://127.0.0.1:7890
+          all_proxy=socks5://127.0.0.1:7890
+      become: true
+    - blockinfile:
+        marker: "# {mark} CLASH ENVIRONMENT BLOCK"
+        dest: /home/{{ansible_ssh_user}}/.zshrc
+        block: |
+          set +e
+          isRun=`ps aux | grep clash | grep '\-d'|grep -v grep|grep -v ansible`
+          [ -n "$isRun" ] && export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
