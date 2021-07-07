@@ -1,0 +1,788 @@
+3->(629,798} Pod不会被杀死
+5->24,2302 迁移到组织下
+12 禁用 k8s 的方法
+18 支持子域 如能microk8s.io也能 www.microk8s.io 
+20 不添加 microk8s.kubectl 作为 kubectl
+21 对 k8s 跟踪
+23->42 microk8s.reset
+    369
+    393 没有超时设置
+    497 支持--help
+29->105 调度 POD 的资源,如果不足,退出
+   --eviction-hard="memory.available<500Mi,nodefs.available<1Gi,imagefs.available<1Gi"
+   463 所有内容都处于 Evicted 或 Pending 状态
+        df -h 可以看到磁盘空间是否不足
+   483 FailedScheduling 1 节点存在 pod 无法容忍的污
+   591 “linkerd-controller-”pod 的“linkerd-proxy”容器未准备好 
+       空间大小 不足
+31 Microk8s 使用 docker agent
+33 microk8s stop 而不是microk8s disable(文档不足,让人以为diskable是可以停k8s)
+36 node没起  想到,需要inspect, 使用 journalctl -u snap...
+    从日志中,我们可以看出, m.docker 的配置文件用了系统的dokcer, 而不是snap的.虽然 期望上是用snap上的.
+37->104->36(inspect) status日志太多了,也会越来越复杂. 需要单独模块去处理. 所以实现了 inspect
+    42 实现的过程(review time)
+
+43 检查端口 8080, 最后应该是使用别的端口了
+44 Microk8s重启失效 (45)
+45 安装 nfs-common In microk8s(49)
+48->506 无没对 pod进行停止,(比如snap remove) 这是和snap有关的.
+52->101,2368  docker 注册表附加组件(没有实现, 建议在snap 自己安装)
+53->102 implement metrics service
+54->55 实现microk8s.config (边缘版本 修复了问题)
+57 kubeflow 部署问题 (边缘版本 修复)
+    805  wf收到此证书错误
+    817 支持kubeflow
+    859->864 启用 Kubeflow 应该默认使用 juju store 
+        958
+58 sudo snap remove microk8s
+61 connection to server refused
+62 软件突冲
+    --non-masquerade-cidr=10.152.183.0/24
+    https://github.com/ubuntu/microk8s/blob/006353429d0af976d89fb1c8291e53fe54730e4d/microk8s-resources/default-args/kubelet#L9
+63 端口的情况
+```
+$ sudo netstat -tulpan |grep LISTEN |grep kube
+tcp        0      0 127.0.0.1:10251         0.0.0.0:*               LISTEN      17850/kube-schedule
+tcp        0      0 127.0.0.1:10252         0.0.0.0:*               LISTEN      17895/kube-controll
+tcp        0      0 127.0.0.1:8080          0.0.0.0:*               LISTEN      18387/kube-apiserve
+tcp        0      0 127.0.0.1:10256         0.0.0.0:*               LISTEN      17915/kube-proxy
+tcp        0      0 127.0.0.1:10248         0.0.0.0:*               LISTEN      17831/kubelet
+tcp        0      0 127.0.0.1:10249         0.0.0.0:*               LISTEN      17915/kube-proxy
+tcp6       0      0 :::10250                :::*                    LISTEN      17831/kubelet
+tcp6       0      0 :::10255                :::*                    LISTEN      17831/kubelet
+tcp6       0      0 :::10257                :::*                    LISTEN      17895/kube-controll
+tcp6       0      0 :::10259                :::*                    LISTEN      17850/kube-schedule
+tcp6       0      0 :::16443                :::*                    LISTEN      18387/kube-apiserve
+```
+64 支持 IPv6
+65->108 与 LXC 不兼容
+66->68->75 77 apiserver和 ufw 的问题
+70 支持helm
+    717 启用 helm 时出错
+    843 支持helm3
+72 microk8s 中的网络->iptables的问题
+73->149,151,392 kubectl connection error
+    网络切换时, k8s不知道,所以要重启
+74  systemd logs
+75 dns问题
+    microk8s.kubectl edit -n kube-system cm/coredns
+    378  kubedns 迁移到 coredns
+    535 特别的字符 或 docker版本问题
+78 iptables让 pod 可以启用出站网络
+81 自动关闭的--Pod 在与 master 交谈时获得“未经授权”Unauthorized
+    可能是没有sudo ?
+84->787,329,323,230,220 RBAC的启用
+    523 coredns无法与rbac一起使用
+    814 启用 RBAC 后集群节点“未准备好”
+        836 fix
+85 Update the CNI to the latest version
+87 自动关闭的--安装 microk8s snap 会影响 LXD 桥接器
+89->90 microk8s.enable文档说明?
+92->110,465,177,118 多网卡安装k8s的问题
+    Microk8s 应该在 IP 更改后存活
+    Apiserver kicker 跟踪 IP 更改
+93 支持 docker打本地image
+95 使用主机端口(其实 我思考了一下: 长期用服务, 短期 proxy)
+96 Pod 指标不可用(kubelet 的参数不对)
+98 microk8s 支持 zfs
+    文件系统
+    481 nfs
+
+106 自动关闭的--error creating aufs mount
+109 microk8s.reset 优化(清空更多的资源对象(按命名空间清理))
+    335 是电脑的问题
+110->88->284,285,286 默认不绑定不安全地址(0.0.0.0)现绑定在127.0.0.1
+    同63
+115 fix microk8s.disable 
+119->120 虚拟机上跑microk8s的兼容性问题
+121 kube-apiserver args 设置错误
+123 许可证(添加许可证129)
+128 新手使用,发生的问题
+132->861 支持 mac
+    731
+133 ->140,144
+    ->145,211,507,2337
+    140-> rabbitmq helm chart 在 Azure VM 上的 microk8s 上运行
+        对apiserver args里的 mode(模式)不使用 userspace(有视频)
+        使用哪种代理模式：'userspace'（较旧）或'iptables'（更快）或'ipvs'（实验性）。如果为空，请使用最佳可用代理（当前为 iptables）
+134->29 Low resources warning
+136 命令无法使用,可能是因为路径没有/snap/bin
+138 preStop 钩子失败(CNCF修复)
+141->147 日志太多了(mk开始稳定了,可以用默认的日志,而不是v=4)
+142 Ingress 不适用于 AWS(兼容性问题,可能还有,因为202012有新讨论)
+148 缺少包net-tools
+152->73
+153 Can't start a pod
+155 microk8s.status 支持参数来显示更多信息
+    比如 addon
+156->165 Debian 9上安装出问题了(因为snap落后了)
+    sudo snap install core
+    core的安装会强制snapd重新执行自己的较新版本
+    436
+157 registry支持配置
+158 Registry有时失效
+159 docker0 配置 网桥 MAC 地址
+160->161 日志优化
+162->229 microk8s.start stop支持
+163 github下载速度的问题(Kubeflow),但可能是过时的
+164 microk8s 添加到 jenkins-x
+166 docker自定义版本的问题
+167 microk8s.kubectl get componentstatus 报告 etcd 不健康
+    不用etcd了
+168 软件认证(一致性标志)
+169 多少节点合理?
+173 docker-proxy (containerd的时代了)
+174 支持 enable
+175 dockerd-env的支持(proxy),以及registry(184)
+176 虚拟机上无法启动 (内存不足(500M))
+180->259,270,304 可能还是存在的(因为有新讨论):
+    不让改.kube/config 
+    microk8s.kubectl config --kubeconfig ~/.kube/config  get-contexts
+    microk8s.kubectl --kubeconfig=$HOME/.kube/config get no
+
+    259(
+        编辑/var/snap/microk8s/current/args/kubectl
+        --kubeconfig=${KUBECONFIG}
+    )
+184->346->347 storage 支持本机的问题修复.
+        不能pull image
+    357 Pod 停留在 ContainerCreating 状态
+188 无法解析 pod ip 地址(没认真看)
+189 无法从 Harbor 1.6 #189拉出
+    docker的问题, 还有计划 迁移到 containerd
+191 Telepresence 不适用于 micro8s
+    yay -S libselinux
+192 新的 StatefulSets 和 PVCs 在 100Gi 的默认 PVs 后等待 PV 创建
+    可能只是新人的使用问题
+        675 启用 coredns：验证数据时出
+            应该只用 enable dns
+    771 MicroK8s仪表板使用 令牌
+197 Kompose 集成
+    没有去实现
+198->43->1192 8080->16443
+    394
+199 microk8s.{start,stop} 不再存在，但在文档
+    启动/停止命令是最近添加的
+200 nginx 负载均衡器服务 EXTERNAL-IP 始终处于“待处理”状态
+    使用 nodePort而不是集群IP(ClusterIP)
+205 添加Sentry.io 功能
+206 在 NodePort 上运行 docker hub nginx 映像并遇到accept4() failed (24: Too many open files)
+    可能是cpu核数太多,可以用  worker_processes  auto;
+207 NodePort IP：端口不起作用。我可以卷曲 Pod 的 IP:Port。EndpointIP:Port 导致 Bad Gateway 错误。“主机端口：0/TCP，0/TCP”在描述 pod 输出中注意到
+    太复杂了,没有看
+211 kaniko虚拟机 安装docker的问题
+
+214 更新docker...continerd了
+215->238 自动关闭的--crashloopbackoff
+    602 端口冲突
+216->533,568,583 容器内exec iptables -L,
+    您需要--allow-privileged true在kubelet和kube-apiserverconfigs 下添加一个参数/var/snap/microk8s/current/args/，然后重新启动两个服务器：
+    sudo systemctl restart snap.microk8s.daemon-apiserver
+    sudo systemctl restart snap.microk8s.daemon-kubele
+218 创建的 mysql 容器未使用 env 值进行配置
+    mysql的错误? 可能只是没有重启 container
+219->215 MySQL无法用(重启k8s就好了)
+221 dns 配置的一些说明
+222 a bug about ingress in mk
+223->1307 备份和恢复 microk8s 快照
+224 在不重启 nginx 本身的情况下重启上游 pod 后，Nginx 不起作用
+    不清楚具体的内容
+227 FR: please add kiali in the istio instalation 
+228 armhf不支持microk8s
+230 istioV1与microk8s的兼容性问题
+231 implement refresh
+234 访问仪表板
+```
+microk8s.kubectl label service/kubernetes-dashboard kubernetes.io/cluster-service=true --namespace kube-system
+
+然后使用
+
+microk8s.kubectl cluster-info
+
+下面是结果
+
+dev@instance-3:~$ microk8s.kubectl cluster-info
+Kubernetes master 运行在https://127.0.0.1:16443
+Elasticsearch 运行在https://127.0.0.1:16443/api/v1/namespaces/kube- system/services/
+elasticsearch -logging/proxy Heapster 运行在https://127.0.0.1:16443/api/v1/namespaces/kube-system/services/heapster/proxy
+Kibana 在https://127.0.0.1运行： 16443/api/v1/namespaces/kube-system/services/kibana-logging/proxy
+CoreDNS 运行在https://127.0.0.1:16443/api/v1/namespaces/kube-system/services/kube-dns:dns /proxy
+kubernetes-dashboard 运行在https://127.0.0.1:16443/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy
+Grafana 运行在https://127.0.0.1:16443/api/v1/namespaces/kube-system/services/monitoring-grafana/proxy
+InfluxDB 运行在https://127.0.0.1:16443/api/v1/namespaces /kube-system/services/monitoring-influxdb:http/proxy
+
+打开https://127.0.0.1:16443/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy
+```
+
+235,333 Multi node support
+236 nvidia-docker 的问题(没有什么有用的信息)
+240 非sudoer的问题,真机上没有问题
+    633 travis 中的新问题：访问 MicroK8s 的权限不足
+        sudo -E 可能有用
+242 microk8s.kubectl 别名
+243 microk8s.reset 问题 (无法复现)
+244 如何重置/重启/初始化/恢复集群(没有有用的信息)
+245 Vanilla 安装，DNS pod 无法启动
+    可能只是使用的问题
+250 kubectl 日志不工作
+    每当我尝试在 microk8s 中的任何容器上使用 kubectl 日志时，它都会尝试在 my.dns 上查找 my-hostname。当然，我的工作站不在 DNS 服务器上。尽管如此，我希望能够使用 kubectl 日志
+    没有认真看
+251 添加对服务目录
+    没有回复了
+    
+252,255,263,272,278,287,337,344,249 docker
+    346,347,358
+    403
+    430
+    464
+    490
+    506 Ubuntu 18.04.02 因软件包升级而损坏
+        apt-get remove docker.io 和 containerd.io 
+        sudo apt-get remove docker-ce docker-ce-cli containerd.io
+        DNS 然后在禁用/启用后成功启动，我能够启动部署
+    512 无法访问私有 Docker 注册表
+    635 错误：无法生成容器 XX 规范：无效的环境变量“ENV_VAR”
+        环境变量的问题?不是的,docker-compose转换后的文件的问题
+    681 无法从 hub.docker.com 拉取图像
+        能否提供一个示例 Dockerfile 然后没有下文
+264-> 部署
+    386 Failed to enable istio 
+    395 无法正确提取 IP
+    397 influxdb问题
+    399 没有enable(没有正确的使用)
+    407,418
+    419 mk更新了,版本兼容问题
+    420
+    431 istio 在 1.13 上失败, MK更新解决
+    432 自动更新的问题
+    443 ingress使用问题
+    465 允许一种使用配置文件配置 microk8s 组件
+    468 集群卡在 SchedulingDisabled 状态直到重启
+    474 MicroK8s 服务在刷新后重启
+    496 Microk8s：重启后出现“失败
+        可能是语言, 文件系统 设备, 使用 DHCP
+        最后:
+            使用英语（而不是意大利语）创建一个新的 VM
+            使用 kvm 默认网络（virbr0 上的 dhcp 和 nat 路由）
+            使用自动网络配置
+    509 kubectl top 不适用于 1.15.0-rc1
+    510 支持win10 (python-installer)
+    516 stroage插件不适用于 RBAC
+    519 microk8s.daemon-kubelet 无法在 19.04 上启动
+        是因为19.04 的内核已经改变了 cgroup 的内核
+    521 1.15 在 Fedora 30 上失败
+    525->527 kubelet 无法连接到 containerd.sock
+    530,538 container 无法获取 PID/Program(因为apparmor出了问题, 修复内容有点不懂)
+    531 Microk8s not starting correctly after boot
+    533 DNS无法正常工作
+        可能是 coredns kubedns 有差别,或 apparmor内核上的问题
+    540 kubectl delete ns -n <namespace> --all删除所有命名空间
+        上游修复了,下游等待就可以了
+    565 RBAC 似乎不起作用
+    569 启用 RBAC 时，主机路径配置器无法删除持久卷对象
+    597 finish install kubeflow
+    612 /snap/microk8s/743/usr/bin/curl: 加载共享库时出错
+    634 snap 版本 826 有一个带有 2 个 IP 地址的网络接口的错误
+    641 从 1.13/stable 刷新 snap 到 1.15/stable 失败
+    642 utils.sh getDefault_ip 导致返回多个 ip 地址
+    647 docker 网络消失
+    666 v1.16.0 stable&candidate break Dashboard Token login 404 重定向错误
+    669 openssl 对于 ubuntu下的snap里的python不起用
+        ->686 我也是同样的问题
+        ->720 缺少 SSL 模块导致 Microk8s 集群（加入命令）错误
+    679 Snap 安装失败 >=1.16
+        问题发生时,可能已经正在修复了
+    716 enable storage fail
+    753 使用1.16/edge/kubeflow
+    769 ->773 snap及sudo问题
+    844 Prometheus Operator fail on 1.16
+273 proxy image
+    361
+    396 您的containerd-env文件应该只有这两行：
+        HTTP_PROXY="YOUR_HTTP_PROXY"
+        HTTPS_PROXY="YOUR_HTTPS_PROXY"
+    412 gitalb-> gitlab, 
+    452 ctr的使用
+    724 Containerd-env 不工作
+        752 microk8s.ctr不工作
+    725私有注册表中提取图像时禁止 401
+    754 ctr use --namespace k8s.io
+    756 访问私有库,升级containerd 1.3解决
+    842 支持“--image-mirror-country”和“--image-repository”等参数
+    873 docker tag将图像重命名为 ECR 远程名称/URI，然后执行docker save和ctr import
+    881 vpn to image
+        -> 472,856
+    899 无法从不安全的注册表中提取图像（microk8s.enable 注册表）
+        32000 & 疑难杂症?
+434 无关的 --kubeflow--Argo 中的 PNS 执行器解决
+300,1845,43,387,377,367 port转发
+    387
+253->413 将容器的最大打开文件描述符数设置为 65k
+    /var/snap/microk8s/current/args/containerd-env并在最后添加这一行：
+    ulimit -n 65536
+256,274 不使用 sudo 运行命令
+257 microk8s 失败
+258 网络策略支持
+260,348 全新安装后容器卡在 Pending / ContainerCreating
+    dns问题, 没有认真看
+261->355->23,42->109
+265 窃取服务名称
+    没有有用的信息
+266,293 iptables on containerd
+271 推动使用coredns
+277 Microk8s seems to be broken on kernel 4.20.0
+    没有有用的信息
+280 不干净地删除了快照，导致它进入“禁用”状态
+    无法处理 btrfs的问题
+281->252 无法将映像从 AWS ECR 拉到我的本地主机
+289 无法将 influxdb 导入 grafana
+    prometheus 操作符插件
+291 microk8s 使用 configmap nginx-load-balancer-conf 作为 nginx 选项，CDK 和上游现在使用 nginx-configuration。它们之间也存在命名空间差异。CDK 使用 ingress-nginx-<application_name>，默认为 ingress-nginx-kubernetes-worker。
+    https://github.com/canonical-web-and-design/deployment-configs/pull/194
+294 StatefulSet RollingUpdate 和 ReadinessProbe 参数不可用？
+    配置问题
+295 microk8s.inspect 需要很长时间
+    sudo iptables -P FORWARD ACCEPT
+    mk restart
+    ->332,345,
+    461 无法获取 pod 日志
+    477 Traefik 不工作
+    541  iptables-persistent  使更改永久化
+    605 iptables的规则,(忽略规则)
+    897 DNS未就绪
+297 在 configmap 更改时自动重新加载
+    kubevirt/kubernetes-device-plugins#54
+    可能弃用了
+298 AWS EKS 节点之一因 KubeletHasSufficientPID 出现故障
+    与AWS有关(299)
+301 Ingress on arm64 is failing
+302 Pod 之间不保留源 IP
+    没有了解的人,无法解决
+303->312,313 内存占用
+312 虑用 sqlite #312替换 etcd
+313 考虑删除调度程序
+    https://github.com/k3s-io/k3s/issues/26
+305 用于存储的 microk8s-hostpath 感觉多余
+    没有认真看
+308 label about microk8s
+    --node-labels microk8s.io/cluster
+    附加kubelet 的默认参数
+311 fluentd->Elasticsearch-Kibana-Fluentd 日志记录
+    Correct the fluentd paths 
+316->408 我的 pod 无法通过 UDP 或 TCP 访问外部网络，但 ICMP 可以工作
+    cbr0(408)
+317 ufw
+319 运行 microk8s 的最低硬件要求是什么
+    1GB
+320 enable knative
+322 upgrade the nginx ingress to 0.22.0?
+326 ksync with mk
+    放弃了
+327 安装失败(权限问题)
+331 kubectl 日志超时
+332 DNS 在全新安装时不起作用
+334 liveness 和 readiness 探针不遵守参数
+    restartPolicy: Never属性是在使用kubectl run --restart=Never ...命令式命令创建 pod 时生成的，因此，它阻止了活性探针重新启动 pod。
+336 snap构建可能失败
+338,352 linkerd2
+339 Ingress使用DNS会失败的PR
+341 构建 Microk8s
+351->1109 自动配置 Magic IP 10.0.2.2 以与主机操作系统对话
+353 curl: (56) Recv 失败: 连接重置(没有回复了)
+354  LoadBalancer 服务 ( proxy-public) 保持永久<pending>状态
+    可以直接通过集群 IP 访问服务，因为运行 MicroK8s 的机器是 Kubernetes 节点。
+    您还可以将 设置proxy-public为 type NodePort
+    766 lb 控制器无法与 api 服务器通信 
+356 kubectl top pod没有显示任何利用率 %
+359 随机 OCI 运行时执行失败
+        snap更新 mk,但最新的mk可能有问题
+360 出于性能原因，Elasticsearch 需要关闭交换/内存锁定。在 kubernetes 中部署 ES 时可以实现吗？
+362->1536 Ubuntu 16.04 映像的内核上不支持 squashfs
+    sudo apt-get install linux-image-generic
+363 Move istioctl binary downloading in the wrapper
+364->365 kubernetes 仪表板 pod 的 InvalidImageName
+    libselinux的问题吧
+367->300,376 DNS port没有转发
+    mkdir -p ~/.kube && microk8s.config -l  | sed "s/:8080/:$API_PORT/" | sudo tee /var/snap/microk8s/current/kubelet.config > ~/.kube/microk8s.config
+    377 存储插件但没有在默认存储类上创建 pv/pvc
+368 未找到节点错误
+    to_the_moon 重命名为to-the-moon
+370->371,372 修复需要 patchelf 的软件包(/snap/microk8s/442/usr/bin/gawk：加载共享库时出错：libreadline.so.6)
+    (细节缺少,但是有fix)
+373->374 未从主机获取 openssl
+379 tail -f /var/log/syslog 信息太多了
+    https : //github.com/kubernetes/kubernetes/pull/73121/files
+381 快照自动刷新到 v1.14.0（rev483 / 经典）后等待卷附加/挂载到 pod 时超时已过期
+    版本问题-》我们已经放弃了 microk8s 并转向托管解决方案，因为我们自己的集群的维护不再可行，所以很抱歉我们不会再跟进这个问题。
+383 https 服务没有token身份验证
+388  http 重定向到 https
+    - host: jenkins.local
+    or
+    它通过添加 nginx.ingress.kubernetes.io/ssl-redirect: "false"注释对我有用。我正在使用v1.14.0，入口控制器是0.22.0
+389 grafana 登录凭据问题
+390 如何使用registry
+400->402,404 使用 ip 而不是 ifconfig 进行 IP 检测
+401 支持ZFS
+    1.18修复
+408 firewall-cmd 配置
+414 设置LoadBalancer
+416 容器间通信需要通过 localhost
+    但我的记忆里是 ClusterIP?ServiceName?
+417 通过registry 访问本地image
+421 mk Node的相互访问
+423 重启daemon-kubelet 失败
+    sudo systemctl restart snap.microk8s.daemon-kubelet.
+426 Headless services differ between userspace and iptables
+    https://github.com/kubernetes/kubernetes/issues/76645
+427 证书
+    415 虚拟机安装下的证书问题(因为IP导致的)
+    444 无法向 API 服务器注册节点：节点无效
+    455 默认启用CSR审批和发布
+    470 自动检测 csr.conf.template 中的更改并重新创建证书
+    721 聚合层的单独 CA(复杂)
+    849 替换 API 证书的文档
+        使用 csr
+429 网络
+    https://www.altoros.com/blog/kubernetes-networking-writing-your-own-simple-cni-plug-in-with-bash/
+    MicroK8s 用于10.1.1.0/24放置 Pod，这可能会导致您的设置中出现网络冲突
+    440
+    445 microk8s.istio 无法处理 DestinationRule (应该不是mk)
+    451 笔记本重启网络 IP变化让mk无法工作
+    454 CSI 插件提供的 PV 没有工作
+    492 集群每 ~1 分钟重启一次(我个人认为是网络的问题)
+    493 DNS 解析问题
+    494 ingress有注释,就不工作了
+        由于 microk8s 没有在ingress-class中指定ingress.yaml，那么您也不需要指定 ingress-class 注释。这就是删除注释有效的原因
+    498 本地主机上的服务端口不工作(没有认真看...)
+    499 ingress命名空间在default ,而不是在ingress
+    502 Fluentd，ElasticSearch-Logging
+        想要获取所有pod的日志并在kibana中显示.
+            但是,虽然 fluentd 非常适合多租户 kubernetes 集群,
+                您无法获得所有有助于调试 pod 和集群的 kubernetes 元数据。
+    503 无法访问集群中的 kube-dns
+        断开我的 vpn
+    536 无法连接到正在运行的 pod 中的 shell
+        /etc/hosts没有对应信息 (也算是dns的问题)
+    570 nginx ingress 启用 SSL passthrough
+        (看不懂)与此同时，我认为做一个kubectl edit ds nginx-ingress-microk8s-controller或抓住那个清单并做一个kubectl apply -f modified-ingress.yaml将是前进的方向。
+    758 nginx 无法访问--可能是端口不对 不是 80 是8080(80可能被使用了--如为kubectl exec可以用)
+    781 需要禁用IPv6
+       https://itsfoss.com/disable-ipv6-ubuntu-linux/ 
+    800 默认情况下，kube-proxy 假定节点已使用其主机名在 API 服务器上注册。
+        但是，在您的情况下，nslookup "any_node_hostname"它会告诉你这个主机名是未知的
+            807维护者打算在设置集群时找到解决它
+        845 iptables
+    806 proxy后面的mk
+        如果您查看 kubelet 日志，journalct -u snap.microk8s.daemon-kubelet您应该会看到它无法绑定到 10250 端口，因为它正在被另一个应用程序使用
+        snap kubelet是不需要的,mk 自己会带有一个
+    816 csr&IP与kuberctl port-forward
+    847 提问者用的是8080,但1.13之后已经是 16443了 
+    854 iptables的使用
+        sudo iptables -S
+            应该是centos上 REJECT --reject-with icmp-host-prohibited 的问题
+    856 curl 的 proxy 是在  /root/.curlrc
+    890 设置DNS配置文件
+            外壳是这样工作的：
+                总是假设IP.1和IP.2是固定的，即127.0.0.1和10.152.183.1
+                然后它将开始自动发现所有网络接口及其 IP 地址，并从 IP.3
+                然后是您要添加的自定义 IP 地址。例如，某个负载均衡器提供的外部虚拟 IP。
+    922 主机上的网络接口发生变化时，MicroK8s 需要重新配置并重新启动其服务
+    930 8.8.4.4:53: 没有这样的主机
+            listen tcp: lookup localhost on 8.8.4.4:53: no such host
+            因为/etc/host没有localhost,只有monkeydryzen
+    1078 修改网卡的步骤
+442 安全问题
+457->662 没有默认后端,Nginx能返回404,如果让ingress来处理,是一种浪费
+461 无法获取 pod 日志
+475 kubevirt的使用
+482 kubelet参数设置
+    使用 containerd 修剪快照
+487 Juju 引导到 microk8s 失败，证书无效
+488 microk8s.reset 清理卷
+    microk8s.reset --destroy-storage
+513 无法启用仪表板 cbr0->cni0 导致的
+526 上传大文件时,ingress会失败
+    https://stackoverflow.com/questions/49918313/413-error-with-kubernetes-and
+532 没有回复的
+        能够为非本地用户使用 kubectl
+    548 microk8s.disable registry卡住 
+    553 Opening https://[ip]/#!/cluster?namespace=[namespace] opens namespace default after login 
+        不知道什么意思
+    584 添加命令以方便仪表板访问
+    618 服务 snap.microk8s.daemon-kubelet 未运行
+    727 Microk8s 集群节点在集群升级后保持注册状态(节点添加了两次)
+    757 kubelet rbac 设置不足。
+    798 Pod 不再被杀死
+    821 Ingress failing when RBAC enabled
+        Ingress的问题?
+    831 删除并重新安装后无法启用 dns 和存储
+    1172 Pod 中的网络问题,(对网络接口进行更改)
+534 apiservice-kicker 切换位置并获得不同的 IP时,会使用它。
+    这时会重新启动mk服务(与在主机上分配一个新的 ipv6)
+544 启动时的一些问题
+    --allow-privileged在 v1.15 版本中，该参数已从 Kubernetes kubelet 中删除
+545 更新istio版本
+546 sgx与MK兼容性问题
+547 对start,stop,disable 加上 --wait
+549 在 Ansible 中从非交互式 shell 启用 DNS 不会启用名称解析
+    ansible shell 需要有暂停(因为enable耗时长的)
+555 securityContext.privileged: Forbidden: 集群策略不允许
+    可能只是使用上的问题
+    不知道的问题(可能只是使用上的问题)
+    khteh
+        557 运行 10 多天后的稳定性问题
+        558 在busybox下,dns 不适用于全新安装
+    609 不干净的主机关闭会产生误报输出来描述正在运行的 pod 和服务
+    611 kube-proxy 仅在 tcp6 上公开服务
+        服务标签上
+    613 路径在本地持久卷中无法使用
+    614 在 helm install 后 Pod 卡在挂起状态,--yaml 引用了标准而不是 microk8s
+    733 存储和初始用户体验
+    747 snap安装microk8s碰到的证书问题
+    760 带豆荚exec的准备在迪斯科失败
+    832 无法运行 kubectl 日志 / kubectl exec 
+        VM的IP变动了,但机子里的MK里的IP没有也变动. 那么这个IP是不可达的了.
+    858 Pod 无法通过服务访问自身(从 1.16 起，我们切换到flannel CNI)
+        sudo ip link set cbr0 promisc on (to fix)
+
+560 启用 rbac 后，metrics-server 无法访问
+    上游的问题
+561 centos无法使用mk
+562 prometheos 和 metrics-server 之间的冲突
+    你要用helm去安装
+563 无法启用linkerd
+    不知原因的好了
+566 gcloud auth configure-docker 不适用于 microk8s 
+    这应该是无关的事物, gcloud有自己的环境
+583 如何给 kubelet sudo
+    606
+585 reinstall MK, 启用 dns 插件时收到错误
+    集群 IP 不是由 kubelet 指定的，所以我假设您不能保留这样的 IP（预配置 kubelet）。此外，如果我们使用预先配置了集群 dns 的 kubelet 运行，它会将该 dns ip 注入到所有创建的 pod 中，从而在 pod 尝试解决任何问题并且 dns 未启用时导致问题。
+    决方法是先做microk8s.enable dns
+586 开发：在 microk8s 更改后必须重新构建容器依赖 
+    显着缩短开发周期的有用脚本： sudo snap run --shell microk8s.enable. 这提供了在microk8s-resources/actions
+589 Metrics-server 在重新启动或禁用和重新启用后无法工作，如果它超出存储空间
+    应该不是问题,只是..使用者不了解(...)
+    空间问题?
+595 snap.microk8s.daemon-apiserver-kicker.service：启动请求重复太快
+    snap 相关的问题?
+598->590 unable to start kubernetes-dashboard
+    sudo的问题
+    637 仪表板不适用于 RBAC(没有token,以及转发)
+    755 how to visit
+601 OK, it seems that the problem is that dashboard yaml has:
+    imagePullPolicy: Always
+    While others have:
+    imagePullPolicy: IfNotPresent
+    这对我很有启发
+621 microk8s.config 应该在输出结束时打印换行符
+629 快照:保存 snap save microk8s(请先m stop)
+630 加载共享库时出错：Centos 7 上的 libcurl-gnutls.so.4
+631 希望 snap 包包含生成此报告所需的所有内容
+632 hostpath-provisioner 部署在每次 pod 重启时拉取镜像
+    (不清楚如何修复的)
+640 我们可以删除 microk8s.config 的 sudo 吗
+    没有意义?
+648 尝试在 centos7 中安装 microk8s 时出现“GLIBC_PRIVATE not defined in file libc.so.6 with link time reference”错误
+    我们打算通过转向严格限制的设置来解决此类问题。(只安装在ubuntu?)
+650 安装 knative 插件时禁用提示
+    use `echo "y"|`
+652->646 无法在全新的 1.16-rc2 安装中启用大多数功能
+653 Unable to connect to microk8s with kubectl after enabling ufw
+    It was solved with
+    sudo ufw allow 16443
+654 不是MK的问题
+    具有自定义域的 Knative 
+661 enable use-forwarded-headers
+    没看懂
+663 安装 Microk8s 的问题 
+    snap坏了
+665 树莓派上的Berryboot
+    728 Microk8s 集群节点在 ARM64 上卡在 NotReady 状态
+        https://microk8s.io/docs/install-alternatives#arm
+    730  fails for arm64
+    778 KubeletNotReady Ubuntu 19.10 树莓派 3 B+
+        /boot/firmware/nobtcmd.txt通过附加cgroup_enable=memory cgroup_memory=1
+670 教程链接的修复
+673 microk8s.status 未运行且 microk8s 检查给出错误
+    有两具K8s
+674 需要wait 让pod 起来, 从而不让dashboard不起用
+    705,706
+    714 无法启用 Knative 
+680 无法克隆到 gitRepo Volume
+     gitrepo 在 v1.16 上被弃用了
+684 公开暴露的端口与 v1.16 中的文档不匹配
+    https://microk8s.io/docs/ports 端口情况表!!
+687 microk8s.status 应该订购插件列表
+688 停止或删除 microk8s 不会清除 iptables
+    ->1541
+    -> 712 清理网络接口(一个标志，表明我们是创建这个接口)
+    我把它放在这里是因为到目前为止我没有在互联网上找到任何人提到这个。
+    -A KUBE-FIREWALL -m comment --comment "kubernetes firewall for dropping marked packets" -m mark --mark 0x8000/0x8000 -j DROP
+    microk8s 创建的这个 iptables 规则可能会干扰使用 wg-quick 的 WireGuard。我猜这是因为 wg-quick 向数据包添加了 fwmark 并且此规则捕获了它，但这就是我的网络 fu 停止的地方😄
+    可以通过运行恢复规则
+    sudo iptables -D KUBE-FIREWALL -m comment --comment "kubernetes firewall for dropping marked packets" -m mark --mark 0x8000/0x8000 -j DROP
+    https://discuss.kubernetes.io/t/kubernetes-wireguard-flannel-overlay-network-on-vms-blocked-by-kubefirewall/4602
+689 microk8s.enable jaeger 在全新安装 1.16/stable 时失败
+690 安装问题
+695,699 microk8s.helm not find tiller
+    上游的问题(更新了api)
+    729 所有卷的 MountVolume.SetUp 失败
+        ->902 如果主机名有大写字母，RBAC 会失败
+696 无法从浏览器访问仪表板
+701 fluentd不起用(不支持adm64了)
+702->703 支持containerd 1.3
+704,707  无registry存储库时,对于本地构建的imagePullPolicy的说明
+708 Creating sample user(创建示例用户)
+713,1140 kubeflow+microk8s+aws 
+726 microk8s.join 命令会返回异常
+732 如何同一主机上的多个节点(虚拟机启动)
+734 “聚类”快照似乎已经消失了
+        https://discuss.kubernetes.io/t/microk8s-clustering-preview/7472/16
+    版本正在更新中
+    770 忽略启动探针
+738 microk8s.ctr doesn't list any containers since k8s 1.16
+    ctr ls失效
+745 检测更改时忽略 cbr0 添加的 IP 地址
+    ->from 741
+743 更新ISTIO
+774 stop超时时间增加
+777 microk8s.status 没有列出 kubeflow
+779 Dashboard-metrics-scraper 图像支持 ARM64
+782 Microk8s 在 127.0.0.1 停止监听(inspect 自己debug)
+790 Microk8s 未启动
+    重置我的 iptables（完全）解决了我的问题
+796 如何将数据目录更改为其他分区
+    https://askubuntu.com/questions/1029562/move-snap-packages-to-another-location-directory/1029948
+802 负载均衡器的讨论(提问者没有理解mk是一个cluster)
+808 remove-node 需要 sudo
+819 update Istio 1.4.0
+820 升级前后hook
+    if [ -e $SNAP_DATA/pre-refresh ]
+    then
+        $SNAP_DATA/pre-refresh
+    fi
+822 Fedora 31 上的 Microk8s
+825 添加 Crossplane 插件
+830 too many open files: unknown
+        某些 pod 未正确关闭某些连接。
+        或
+        vm.max_map_count=262144 on initContainers
+833 如何找到mk的 kubeconfig?
+    如何将 halm 3 与 microk8s claster 一起使用
+    microk8s.kubectl config view --raw > /tmp/kubeconfig.yaml
+    841 支持 kubectl 插件krew
+        kubectl args不正确:
+            /var/snap/microk8s/current/args/kubectl并注释掉添加--kubeconfig
+852 etcd 导致 btrfs 上的高 io 写入
+    使用ext4
+860 cilium花的时间太多,需要优化配置
+861 Windows 和 MacOS 安装程序
+        提供一个安装程序来处理 Multipass+MicroK8s 安装
+        homebrew-microk8s
+865 1.17 集群组件通信都使用 mTLS,是加密的
+867 mk配置文件的一些信息
+884 一些kubeconfig所有者是root, 需要chown
+896 Prometheus - 401 未授权/空仪表板
+    没有看懂
+    1069
+910 树莓派 4 - ubuntu - 启动问题
+912 nvalid capacity 0 on image filesystem
+    zfs
+917 初始化 mk的可能条件
+    代理设置添加到文件/var/snap/microk8s/1117/args/containerd-env
+    sudo iptables -P FORWARD ACCEPT
+918 microk8s 存储解释和迁移
+    请参考上游  https://kubernetes.io/docs/concepts/storage/
+920 在多节点集群上启用 GPU (可能没有解决)
+936 可以从 HOST 访问 ClusterIP 服务？！
+    MicroK8s 将您的主机变成 Kubernetes 节点。您的主机是节点。如果您查看可用的接口 ( ifconfig)，您应该会看到带有 ClusterIP 的接口。
+    在 Windows 和 Mac 上，Linux VM 用于托管 Kubernetes，因此您的节点是一个 VM，其网络通常不会暴露给主机。
+984 MK版本维护对策
+    对于生产部署（除了指定要遵循的轨道），您还应该注意更新何时会到达您的集群 [5]。还可以考虑设置一个快照存储代理来检查哪些更新会到达您。
+994 dqlite
+1005 kubefwd 对k8s中的service进行本地化调试(批量转发?)
+1015 Istio：kiali 不知道 grafana 和 jaeger 的 URL
+1023 建议使用前,设置~/.kube权限
+    ->1073
+    ->1148 kubectl慢
+1030 ingress/ambassador -> ingress/ambassador-ingress
+1041 microk8s.status 重大变化(bug 没有向前兼容)
+1045 storage 只适合单节点,需要使用rook(885)
+1047 多节点 - 添加节点失败且没有错误
+     时钟检查与同步
+1072 在 win 和 mac的安装程序中为MicroK8s 选择频道 
+    1079 windows
+1084 API报错 -- 可能只是存储空间不足
+1087 kubeflow 使用juju而不是kfctl创建
+1116 kubeflow 中使用多租户(不是让mk有多租户(虽然也有提到))
+1117 在docker里跑mk
+    ->233 [功能请求] 在 docker 镜像中支持 microk8s。
+1139 br_netfilter
+    1215
+1150 证书过期处理
+    1167
+    1207
+1173 microk8s 就本地注册表进行通信的标准方式
+    x-k8s.io/registry：从集群外部看到
+    x-k8s.io/registry-from-cluster的注册表的主机（主机名和端口）
+    x-k8s.io/registry-help：从集群内部看到的注册表的主机（主机名和端口）：用户可以在其中阅读有关如何操作的更多信息的文档 URL设置一个注册表。
+1181 更新仪表板，并删除它曾经包含的一些资源(heapster、influx 和 grafana)
+1192 关闭不安全端口 current/args/kube-apiserver 添加--insecure-port=0
+1197  dqlite 节点后 APIserver 抱怨(dqlite bug修复)
+1203 longhorn&helm
+1204 enable Prometheus on arm64
+1214 apparmor 规则防止execs 进入 pods
+     # allowPrivilegeEscalation : false (使用root)
+1221 引入calico是为了HA
+1223 builder的问题
+1224 edge加入工作节点时的通道问题
+     这是因为集群代理没有将正确的令牌返回（它正在返回None）给客户端。
+     进一步挖掘，发现get_token()方法 (in agent.py) 没有遍历known_tokens.csv以找到匹配项。
+1239 mk与系统库冲突了
+1243 ssh 专用网络上运行的 Kubeflow UI 
+     没看懂
+1244 端口转发的问题(RBAC)
+1245->1396 'microk8s.enable kubeflow' 失败，因为 juju '没有注册控制器'
+    jj文件权限
+    ```
+    sudo usermod -a -G microk8s $USER
+     microk8s juju list-clouds
+    ```
+1275 ingress 插件不适用于混合架构集群
+1262 VM上的kubeconfig应指向VM的IP不是主机127.0.0.1
+1281 Multipass不好用的
+1286 轻量的kubeflow
+1287 无法在 macos 上“安装 microk8s”
+        Cisco VPN 通常是这种情况的罪魁祸首
+        没有认真看
+1294 external IP仅在您安装了负载均衡器时才适用
+1300 windows MK(混合的)
+1312->1397 Kubeflow enable checks deadloc
+1313 there is a minikube,and we want to start MK that would be a fail
+1319 Metalb支持IP range
+1326 没有RBAC,enable OLM是不可以的.那么别的也可能是也需要RBAC的
+1332 离线启用 cilium 
+1337 添加第二个存储类
+1340 Homebrew 安装 Microk8s MacOSx
+     相同的虚拟机的IP地址为这使得它有可能是在集群上安装从豆荚中的主机
+     桥接模式网络
+1419 禁用 SSL 中等强度密码套件
+    我已将--tls-cipher-suites参数添加到 Ubuntu 上的以下文件中：
+    /var/snap/microk8s/current/args/kube-apiserver
+    /var/snap/microk8s/current/args/kube-scheduler
+    /var/snap/microk8s/current/args/kube-controller-manager
+    /var/snap/microk8s/current/args/kubelet
+1526 microk8s ctr --debug i pull docker.my.domain/my/app:latest
+1585 从 1.19 microk8s 开始使用 dqlite 而不是 etcd
+    1729 对ha的例子或解答
+     虽然定义了 ips，但是如果不将其添加到/etc/hosts. 我们仍在评估如何“自动化”这部分
+1597 关于多节点安装存储(openebs)
+1619 如果集群是 ha-cluster，当 Cilium 被禁用时，它将回退到 calico。但是，如果您禁用 ha，理想情况下它应该回退到法兰绒
+1653 本地MK(无网络)
+1668  k8s 像这样使用主机域 无法解析 DNS
+1705 dashboard只能在firefox上用
+1827 crictl->/var/snap/microk8s/common/run/containerd.sock
+    ctr据我所知，该命令未使用该containerd配置
+    但仍然收到以下错误信息：ctr：无法解析参考“ docker.io/c
+1794 metalb in ingress
