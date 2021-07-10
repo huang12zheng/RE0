@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: aptsync
+  name: apt-sync
 spec:
   selector:
     matchLabels:
-      app: aptsync
+      app: apt-sync
   template:
     metadata:
       labels:
-        app: aptsync
+        app: apt-sync
     spec:
       containers:
-        - name: aptsync
-          image: ustcmirror/aptsync
+        - name: apt-sync
+          image: ustcmirror/apt-sync
           imagePullPolicy: IfNotPresent
           # ports:
           # - containerPort: 6379
@@ -21,7 +21,7 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: aptsync
+  name: apt-sync
 spec:
   # type: NodePort
   ports:
@@ -29,5 +29,5 @@ spec:
     protocol: TCP
     targetPort: 443
   selector:
-    app: aptsync
+    app: apt-sync
   type: ClusterIP
