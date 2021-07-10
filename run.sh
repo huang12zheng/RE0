@@ -1,6 +1,14 @@
 # set -x
 cd `dirname $0`
-srcs=`ls *.txt`
+ls *.txt>src
+ls *.log|awk -F '.log' '{print $1}'|awk -F 'ans-' '{print $2}'>output
+srcs=`grep -vFf output src`
+if [ -z "`cat output|sed '/^$/d'`" ]; then
+    echo "except"
+    srcs=`cat src`
+fi
+date>>runInfo
+echo $srcs>>runInfo
 # dests=`ls *.log`
 
 for file in $srcs
@@ -12,7 +20,8 @@ IFS=$'\n'
     startFlag=""
     questionflag=""
     answerFlag=""
-    rm $filename.log
+    rm ans-$filename.log
+    filename="ans-$filename"
     for item in `cat $file`
     do
         # echo $item

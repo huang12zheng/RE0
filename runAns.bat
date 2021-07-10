@@ -1,0 +1,1 @@
+bash -c '/mnt/d/teacher-help/run.sh'
