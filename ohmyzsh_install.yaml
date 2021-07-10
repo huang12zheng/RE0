@@ -32,6 +32,13 @@
         ZSH_CUSTOM=/home/{{ansible_ssh_user}}/.oh-my-zsh/custom
         [ -d $ZSH_CUSTOM/plugins/zsh-autosuggestions ] || git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions #auto suggestion
         [ -d $ZSH_CUSTOM/plugins/zsh-syntax-highlighting ] || git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting #syntax highlighting
+    - blockinfile:
+        marker: "# {mark} CLASH ENVIRONMENT BLOCK"
+        dest: /home/{{ansible_ssh_user}}/.zshrc
+        block: |
+          set +e
+          isRun=`ps aux | grep clash | grep '\-d'|grep -v grep|grep -v ansible`
+          [ -n "$isRun" ] && export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
     # - name: .bashrc set
     #   blockinfile:
     #     dest: /home/{{ansible_ssh_user}}/.zshrc

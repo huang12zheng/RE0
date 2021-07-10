@@ -1,0 +1,5 @@
+- name: display wlo register vars
+  become: true
+  shell: |
+    ip lin set {{wlo.stdout}} up
+  when: wlo.stdout!=""

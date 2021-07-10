@@ -1,3 +1,3 @@
 # https://microk8s.io/docs/registry-built-in
 - hosts: ubuntu
-  shell: microk8s.enable helm3 cilium dns ingress istio registry storage dashboard
+  shell: microk8s.enable helm3 cilium dns istio registry storage dashboard
