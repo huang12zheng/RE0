@@ -10,11 +10,13 @@
 - import_playbook: chrome_install.yaml
 - hosts: ubuntu
   tasks:
-    name: snap proxy
-    lineinfile:
-      dest: /etc/profile
-      line: export SYSTEMD_EDITOR="/bin/vim"
-    shell: sudo systemctl restart snapd
+    - name: snap proxy
+      become: true
+      lineinfile:
+        dest: /etc/profile
+        line: export SYSTEMD_EDITOR="/bin/vim"
+    - shell: sudo systemctl restart snapd
+      become: true
 
 - hosts: ubuntu
   roles:
@@ -27,24 +29,3 @@
 - import_playbook: vscode_install.yaml
 - import_playbook: ohmyzsh_install.yaml
 - import_playbook: k8s_install.yaml
-- hosts: ubuntu
-  tasks:
-    - name: .bashrc set
-      blockinfile:
-        marker: "# {mark} CHIA BLOCK"
-        dest: /home/{{ansible_ssh_user}}/.zshrc
-        block: |
-          # . /home/{{ansible_ssh_user}}/.bashrc
-          if [ -f /opt/chia-blockchain/activate ]; then
-          . /opt/chia-blockchain/activate
-          fi
-          alias 'cm=python /opt/Swar-Chia-Plot-Manager/manager.py'
-          alias 'cs=python /opt/Swar-Chia-Plot-Manager/manager.py start'
-          alias 'cr=python /opt/Swar-Chia-Plot-Manager/manager.py restart'
-          alias 'css=python /opt/Swar-Chia-Plot-Manager/manager.py status'
-          alias 'cl=python /opt/Swar-Chia-Plot-Manager/manager.py analyze_logs'
-          alias "gid=ls|awk -F '.plot' '{print \$1}'|awk -F '-' '{print \$NF}'|uniq"
-          alias "sa=ls -l /data/t[0-2]/*|grep -E 108\[0-9\]{9} " #show avil
-          alias "st=ls /data/t[0-2]/*|grep -v lost|sed '/^[ \t]*$/d'|awk -F '.plot.' '{print \$1\"/\"\$2}'|uniq " #show tmp
-          alias "grid=/opt/chia-blockchain/venv/bin/python /opt/Swar-Chia-Plot-Manager/manager.py status|grep ' GiB'|awk '{print \$4}'" #id
-          alias "iss=bash /opt/sh-script/show_status.sh" #show tmp

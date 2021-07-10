@@ -7,7 +7,7 @@ config_url="{{clash_url}}"
 
 if [ ! -d $clashdir ]; then
     sudo -S mkdir -p $clashdir
-    sudo -S chown -R $USER $clashdir
+    sudo -S chown -R {{ansible_ssh_user}} /home/ubuntu/
 fi
 
 f_getfile() {

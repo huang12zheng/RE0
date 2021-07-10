@@ -1,0 +1,10 @@
+- name: display enp register vars
+  shell: |
+    ip a|grep -E ': enp'|head -1|awk -F ':' '{print $2}'|awk '{print $1}'
+  register: enp
+- name: display wlo register vars
+  shell: |
+    iw dev|grep Interface|head -1|awk '{print $2}'
+  register: wlo
+- name: dispaly info
+  debug: msg="{{enp.stdout}} {{wlo.stdout}}"

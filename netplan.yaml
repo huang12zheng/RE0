@@ -1,0 +1,39 @@
+# https://www.haiyun.me/archives/1280.html
+# https://github.com/mrlesmithjr/ansible-netplan/issues/17
+- hosts: ubuntu
+#   # ip a|grep -E ': enp'|awk -F ':' '{print $2}'|awk '{print $1}'
+#   # iw dev|grep Interface|awk '{print $2}'
+  any_errors_fatal: true
+  tasks:
+  - import_tasks: tasks/netplan/get_val.yml
+  - import_tasks: tasks/netplan/setup_wlan.yml
+  - name: Include the mrlesmithjr.netplan role
+    include_role:
+      name: mrlesmithjr.netplan
+    vars:
+      netplan_enabled: true
+      netplan_remove_existing: true
+      # netplan_config_file: /tmp/vlan8-vlan15-netplan.yaml
+      netplan_packages:
+        - wpasupplicant
+      netplan_configuration: '{
+        "network": {
+          "ethernets": {
+            "{{enp.stdout}}": {
+              "dhcp4": true,
+              "optional": true
+            }
+          },
+          "wifis": {
+            "{{wlo.stdout }}": {
+              "dhcp4": true
+              "dhcp6": false
+              "access-points": {
+                  "{{netplan_ssid}}":{
+                      "password": "{{netplan_password}}"
+                  }
+              }
+            }
+          }
+        }
+      }'
