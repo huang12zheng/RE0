@@ -81,4 +81,7 @@
           alias 'm=microk8s'
           alias 'kubectl=microk8s kubectl'
           alias 'cstatus=cat /var/snap/microk8s/current/var/kubernetes/backend/cluster.yaml'
+          alias 'jn=journalctl -n 1000'
           source <(kubectl completion zsh)
+          export SNAP="/snap/microk8s/current"
+          export SNAP_DATA="/var/snap/microk8s/current"
