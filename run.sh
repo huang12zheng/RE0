@@ -1,7 +1,7 @@
 # set -x
 cd `dirname $0`
-ls *.txt>src
-ls *.log|awk -F '.log' '{print $1}'|awk -F 'ans-' '{print $2}'>output
+ls *.txt|sed '/^$/d'>src
+ls *.log|awk -F '.log' '{print $1}'|awk -F 'ans-' '{print $2}'|sed '/^$/d'>output
 srcs=`grep -vFf output src`
 if [ -z "`cat output|sed '/^$/d'`" ]; then
     echo "except"
