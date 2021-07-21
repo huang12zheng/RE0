@@ -130,14 +130,25 @@
 
 * 职业技能
   ```
-  microk8s,helmfile,yaml,shell
-  flutter
-  prisma,grahql
-  vscode-plugin
-  了解ML
+  运维:microk8s,helmfile,yaml,shell,Dockerfile,tcloud,ansible
+  前端: flutter
+  数据层: prisma,grahql
+  其它:
+    vscode-plugin
+  ```
+  ```
+  遗忘技能:
+    angular,zorro,ant
+    一些经典算法
+    traefik,sentry,crdt,ot算法,
+    ML,CPM-Distill
   ```
 * 自我评价
   ```
   责任心强,碰到困难,乐于研究和收集信息,能独立解决碰到的技术问题
   不喜欢可替代的重复劳动,会选择一些方法替代.希望做一些有长远意义的事
+  良好的英文阅读能力
   ```
+
+* 兴趣:
+  [Interests](Interests.md)
