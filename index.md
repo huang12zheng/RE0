@@ -49,7 +49,7 @@
         automerge(rust2dart)
         arbify,gitpod
     qqbot for pcr(k8s,istio,python,nonebot2,go-cqhttp)
-    vscode(dart-data-class-generator,)
+    vscode(dart-data-class-generator)
     ```
   + 202012-202102 无业 
     ```
@@ -140,8 +140,8 @@
   遗忘技能:
     angular,zorro,ant
     一些经典算法
-    traefik,sentry,crdt,ot算法,
-    ML,CPM-Distill
+    traefik,sentry,crdt,ot算法
+    ML,CPM-Distill
   ```
 * 自我评价
   ```
