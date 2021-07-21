@@ -54,26 +54,32 @@
   + 202012-202102 无业 
     ```
     fluidframework(中文文档,PR,生成docker image,sops,kafka,npmsource,共识)
+    thrift,grcp
     ```
-  + 202011 无业 
+  + 202010-202011 无业 
     ```
     kubebuilder on tidb
     helmfile
     nebula
+    dgraph
     ```
-  + 202005-202011 无业
+  + 202004-202010 无业
     ```
     复习ML(大红豆小薏米+台大)
     openvpn中文文档
     k8s
     概率论与数理统计
+    detectron2(目标检测外包)
     ```
-  + 202001-202005 无业
+  + 202001-202004 无业
     ```
     深度学习,强化学习,知识图谱
     flutter
         share_list
+        material_design_follow
+        kiwi,react,poll,loading_morelist,proxy_manager,getx,freezed,form_bloc
     农业银行,万华化学,春秋航空,厦门空港,方大特钢,露天煤业,兖州煤业,火电,合盛硅业,中信建投
+    vscode_remote(workspace)
     ```
   + 201910-202001 链群 flutter(300次提交)
     ```
@@ -132,6 +138,6 @@
   ```
 * 自我评价
   ```
-  责任心强,磁到困难,热于研究和收集信息,能独立解决碰到的技术问题
+  责任心强,碰到困难,乐于研究和收集信息,能独立解决碰到的技术问题
   不喜欢可替代的重复劳动,会选择一些方法替代.希望做一些有长远意义的事
   ```
