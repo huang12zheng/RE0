@@ -1,7 +1,7 @@
 * flutter:
-  + rust2dart
+  + rust2dart(cross-compile)
   + desktop on (linux snap...) ,web
-  + DataModel(StateManage)
+  + DataModel(StateManage for list)
   + App about sharing documents
 * k8s:
   + Internet of things (Bluetooth, Ease of use, Document)

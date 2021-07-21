@@ -1,4 +1,4 @@
-[resume](index.md)
+[resume-cn](index.md)
 * Basic information
   + Name: Huang Zheng
   + Mobile phone: 17682318150
@@ -13,14 +13,14 @@
     A Poisson distribution and singularity model
     ```
 * Practical experience
-Unemployed,. + 202107-202108
++ 202107-202108 Unemployed
     ```
     PR: microk8s, ZSH plug-in
     Video:
-    Understanding the snap, appimage, flatpak
-    CNCF,dqlite,containerd,microk8s
+        Understanding the snap, appimage, flatpak
+        CNCF,dqlite,containerd,microk8s
     Study:
-    Ansible scripting
+        Ansible
     ```
 + 202105-202106 CHIA related work (800 machines)
     ```
@@ -45,11 +45,11 @@ Unemployed,. + 202107-202108
 + 202102-202103 Unemployed
     ```
     tidb,prisma2
-    flutter(riverpod,navigator,ffi,easylocalization,fastlance,circleci,ferry,code_generate,dynamic_widget,adaptive_ui ...)
+    flutter(riverpod,navigator,ffi,easylocalization,fastlance,circleci,ferry,code_generate,dynamic_widget,adaptive_ui and so on)
     automerge(rust2dart)
     arbify,gitpod
     qqbot for pcr(k8s,istio,python,nonebot2,go-cqhttp)
-    vscode(dart-data-class-generator,)
+    vscode(dart-data-class-generator)
     ```
 + 202012-202102 Unemployed
     ```
@@ -90,7 +90,7 @@ Unemployed,. + 202107-202108
   * flutter
     ```
     plugin:
-    code_gen for fish
+        code_gen for fish
     flutter_wanandroid,graphql_flutter,bloc
     ```
 + 201812-201905 Unemployed
