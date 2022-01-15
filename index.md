@@ -4,39 +4,54 @@
   + 手机: 17682318150
   + ~~邮箱:805104533@qq.com~~
   + [兴趣](Interests.md)
+  + 身份证号: 352225199208150018
 
 ## 教育经历
-  + 2011-2015 湖南师大 信息与计算科学 本科学士
+  + 2011-201507 湖南师大(211) 信息与计算科学 本科学士
     ```
     2013 ACM亚州区杭州站铜牌
     2014 中科大保研名额
     数学建模,ACM,了解有限元
     一种泊松分布与奇点模型
     ```
+## 职业技能
+```
+运维: microk8s,helmfile,yaml,shell,Dockerfile,tcloud,ansible
+前端: flutter,ffi(了解)
+数据层: prisma,grahql
+其它: ddd,rust,node
+```
+
+## 职业倾向
+* rust:
+1. 实现干净架构,及代码生成
+2. 一次编码提供给不同设备(ffi)
+3. 本地优先,无服务器设备互联(stun,turn)
+
+* flutter:
+1. 用git为内置的本地存储或协作文档相关的应用
+2. 内容知识,提问相关的应用
+3. 使用干净架构
+
 ## 实践经历
 <details>
 <summary>
-202108-202201 待业，在GitHub上的工作
+202108-202201 待业，在GitHub上的工作及其它
 </summary>
-
+<code><pre>
+在GitHub上的工作:
 1. domain-centric/documentation_builder: 用标记渲染出文档, 同时也扫描所有的dart类
-
 2. felangel/mason: 将多个文件打包成一个文件,反向时,能用变量渲染
-
 3. invertase/melos: dart多项目脚本手架
-
 4. RomanticEra/masonx: 对mason的扩展
-
 5. huang12zheng/webrtc-action: 使用github action,通过补丁现有py脚本,构建二进制文件
-
 6. flutterdata/flutter_data: 本地优先的状态管理工具,能自动初始化对象
-
 7. RomanticEra/romantic_analysis: all_lint_rules_community的自定义静态检查
-
 8. bxqm/dart_data_class_generator: 生成dartcode的vscode插件
+9. felixblaschke/readme_helper 生成readmer的命令工具
 
-9.  felixblaschke/readme_helper 生成readmer的命令工具
-
+其它:
+1. openyurt(边缘云原生)在B站对每个会议进行总结
 </code></pre>
 </details>
 
@@ -109,7 +124,7 @@ linux:
     thrift,grcp
 202102-202103 学习新知识
     tidb, prisma2
-    flutter(riverpod,navigator,ffi,easylocalization,fastlance,circleci,ferry,code_generate,dynamic_widget,adaptive_ui and so on)
+    flutter(riverpod,navigator,ffi,easylocalization,fastlance,circleci,ferry,code_generate,dynamic_widget,adaptive_ui等)
     automerge(试着去rust2dart)
     arbify(翻译,现用i18n manager), gitpod
     vscode(dart-data-class-generator)
@@ -136,7 +151,7 @@ linux:
 
 <details>
 <summary>
-202001-202004 待业, 重学ML and 用10W金融投资
+202001-202004 待业, 重学ML 和 用10W金融投资
 </summary>
 <pre><code>
 1. 深度学习,强化学习,知识图谱
@@ -251,24 +266,19 @@ joinquant(python)
 </code></pre>
 .net,SQL
 </details>
-## 职业技能
-  ```
-  运维:microk8s,helmfile,yaml,shell,Dockerfile,tcloud,ansible
-  前端: flutter
-  数据层: prisma,grahql
-  其它:
-    ddd,rust
-  ```
-  ```
-  遗忘技能:
-    angular,zorro,ant
-    一些经典算法
-    traefik,sentry,crdt,ot算法
-    ML,CPM-Distill,vscode-plugin
-  ```
+
 ## 自我评价
-  ```
-  责任心强,碰到困难,乐于研究和收集信息,能独立解决碰到的技术问题
-  不喜欢可替代的重复劳动,会选择一些方法替代.希望做一些有长远意义的事
-  良好的英文阅读能力
-  ```
+```
+责任心强,碰到困难,乐于研究和收集信息,能独立解决碰到的技术问题
+不喜欢可替代的重复劳动,会选择一些方法替代.希望做一些有长远意义的事
+良好的英文阅读能力
+```
+
+## 遗忘技能
+```
+angular,zorro,ant
+一些经典算法
+traefik,sentry,crdt,ot算法
+ML,CPM-Distill,vscode-plugin
+kubebuilder,node,tidb
+```
