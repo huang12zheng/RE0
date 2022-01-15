@@ -1,10 +1,11 @@
 [resume-cn](index.md)
-* Basic information
+## Basic information
   + Name: Huang Zheng
   + Mobile phone: 17682318150
-  + E-mail: 805104533@qq.com
+  + ~~E-mail: 805104533@qq.com~~
+  + [Interests](Interests-en.md)
 
-* Educational experience
+## Educational experience
   + 2011-2015 Hunan Normal University, Information and Computing Science, Bachelor's Degree
     ```
     Bronze medal in 2013 ACM Asian District Hangzhou Station
@@ -12,7 +13,7 @@
     Mathematical modeling,ACM, understanding of finite element
     A Poisson distribution and singularity model
     ```
-* Practical experience
+## Practical experience
 + 202107-202108 Unemployed
     ```
     PR: microk8s, ZSH plug-in
@@ -129,7 +130,7 @@ Gray box testing (Oracle, Delphi, C ++)
 .net,SQL
 ```
 
-* Professional skills
+## Professional skills
 ```
 Operations: microk8s helmfile, yaml, shell, Dockerfile, tcloud, ansible
 Frontend: flutter
@@ -144,12 +145,9 @@ Forgetting skills:
     Traefik, sentry, CRDT, ot algorithms,
     ML,CPM-Distill
 ```
-* Self-evaluation
+## Self-evaluation
 ```
 Strong sense of responsibility, willing to study and collect information when meeting difficulties, and able to solve technical problems independently
 Do not like replaceable repetitive work, will choose some methods to replace. I want to do something that has long-term significance
 Good English reading ability
 ```
-
-* interest:
-[Interests](Interests-en.md)

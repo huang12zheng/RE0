@@ -1,3 +1,4 @@
+> this is disconnect, use [cn](Interests.md) please
 * flutter:
   + desktop on (linux snap...),web
   + DataModel(StateManage for list)
