@@ -1,19 +1,19 @@
 [English resume](resume_html-en.md)
 ## 基本信息
-  + 姓名: 黄政
-  + 手机: 17682318150
-  + ~~邮箱:805104533@qq.com~~
-  + [兴趣](Interests.md)
-  + 身份证号: 352225199208150018
++ 姓名: 黄政
++ 手机: 17682318150
++ ~~邮箱:805104533@qq.com~~
++ [兴趣](Interests.md)
++ 身份证号: 352225199208150018
 
 ## 教育经历
-  + 2011-201507 湖南师大(211) 信息与计算科学 本科学士
-    ```
-    2013 ACM亚州区杭州站铜牌
-    2014 中科大保研名额
-    数学建模,ACM,了解有限元
-    一种泊松分布与奇点模型
-    ```
++ 2011-201507 湖南师大(211) 信息与计算科学 本科学士
+  ```
+  2013 ACM亚州区杭州站铜牌
+  2014 中科大保研名额
+  数学建模,ACM,了解有限元
+  一种泊松分布与奇点模型
+  ```
 ## 职业技能
 ```
 运维: microk8s,helmfile,yaml,shell,Dockerfile,tcloud,ansible
@@ -24,24 +24,26 @@
 
 ## 职业倾向
 * rust:
-1. 实现干净架构,及代码生成
+1. 实现干净架构;及代码生成
 2. 一次编码提供给不同设备(ffi)
 3. 本地优先,无服务器设备互联(stun,turn)
 
 * flutter:
 1. 用git为内置的本地存储或协作文档相关的应用
-2. 内容知识,提问相关的应用
-3. 使用干净架构
+2. 知识内容或回答相关业务
+3. 使用干净架构写业务
 
 ## 实践经历
+
 <details>
 <summary>
 202108-202201 待业，在GitHub上的工作及其它
 </summary>
-<code><pre>
+<pre>
+<code>
 在GitHub上的工作:
-1. domain-centric/documentation_builder: 用标记渲染出文档, 同时也扫描所有的dart类
-2. felangel/mason: 将多个文件打包成一个文件,反向时,能用变量渲染
+1. domain-centric/documentation_builder: 用标记渲染出文档, 同时扫描所有的dart类
+2. felangel/mason: 将多个文件打包成一个文件,反向过程中,能用变量渲染
 3. invertase/melos: dart多项目脚本手架
 4. RomanticEra/masonx: 对mason的扩展
 5. huang12zheng/webrtc-action: 使用github action,通过补丁现有py脚本,构建二进制文件
@@ -52,7 +54,8 @@
 
 其它:
 1. openyurt(边缘云原生)在B站对每个会议进行总结
-</code></pre>
+</code>
+</pre>
 </details>
 
 <details>
@@ -86,7 +89,7 @@ ffi:
 
 <details>
 <summary>
-202105-202106 800台机器的运维(奇亚)
+202105-202106 800台机器的运维(奇亚chia)[币价下跌,自动化完成,公司解散]
 </summary>
 <pre><code>
 win:
@@ -171,7 +174,7 @@ linux:
 
 <details>
 <summary>
-201910-202001 链群 flutter工程师
+201910-202001 链群(左象)(破产) flutter工程师
 </summary>
 <pre><code>
 1. 进行300次 PR
@@ -181,10 +184,13 @@ share_list
 3. 协助测试人员了解flutter,编写widget test
 4. 尝试响应式设计
 5. 尝试从fish_redux迁移到bloc
-业务上:
+
+工作中实现的业务:
 1. 重构登录(分离登录验证模块,支持微信)
 2. 群组(没有分离出角色相关验证,状态太多(人员三种,群三种),没想到分9个类去写)
 
+选择链群的原因是因为它介绍下一阶段会做内容,
+以及flutter当时公司比较少
 </code></pre>
 </details>
 
