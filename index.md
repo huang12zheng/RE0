@@ -19,22 +19,30 @@
 202108-202201 待业，在GitHub上的工作
 </summary>
 
-1. domain-centric/documentation_builder: 用标记渲染出文档,同时也扫描所有的dart类
+1. domain-centric/documentation_builder: 用标记渲染出文档, 同时也扫描所有的dart类
+
 2. felangel/mason: 将多个文件打包成一个文件,反向时,能用变量渲染
+
 3. invertase/melos: dart多项目脚本手架
+
 4. RomanticEra/masonx: 对mason的扩展
+
 5. huang12zheng/webrtc-action: 使用github action,通过补丁现有py脚本,构建二进制文件
+
 6. flutterdata/flutter_data: 本地优先的状态管理工具,能自动初始化对象
+
 7. RomanticEra/romantic_analysis: all_lint_rules_community的自定义静态检查
+
 8. bxqm/dart_data_class_generator: 生成dartcode的vscode插件
-9. felixblaschke/readme_helper 生成readmer的命令工具
+
+9.  felixblaschke/readme_helper 生成readmer的命令工具
 
 </code></pre>
 </details>
 
 <details>
 <summary>
-202108-202110 待业, 用28W金融投资
+202108-202110 待业, 用28W金融投资及学习了解各行业
 </summary>
 <pre><code>
 风电设备(海缆)
