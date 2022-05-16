@@ -15,12 +15,12 @@
   一种泊松分布与奇点模型
   ```
 ## 职业技能
-```
+
 运维: microk8s,helmfile,yaml,shell,Dockerfile,tcloud,ansible
 前端: flutter,ffi(了解)
-数据层: prisma,grahql
-其它: ddd,rust,node
-```
+数据层: prisma,grahql,rust(poem-openapi),[Flink](system/flink/index.md),[clickhouse](https://t.bilibili.com/628873900377886761?spm_id_from=333.999.0.0)
+[数学与深度学习](math/index.md)
+其它: ddd,[rust](system/rust/index.md),node,Ros2,llvm,
 
 ## 职业倾向
 
@@ -30,6 +30,12 @@
 3. 使用干净架构写业务
 
 ## 实践经历
+
+<details>
+<summary>
+202201-202206 学习flink,数学,深度学习,复习flutter,rust,yjs,wasm,Figma
+</summary>
+<pre>
 
 <details>
 <summary>
