@@ -1,0 +1,2 @@
+## BottomNavigationBar
+* props: onTap,currentIndex,elevation,type,fixedColor,backgroundColor,iconSize,selectedItemColor,unselectedItemColor,selectedIconTheme,unselectedIconTheme,selectedFontSize,unselectedFontSize,selectedLabelStyle,unselectedLabelStyle,showSelectedLabels,showUnselectedLabels,mouseCursor,enableFeedback,landscapeLayout,
