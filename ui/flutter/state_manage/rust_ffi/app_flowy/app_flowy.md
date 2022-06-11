@@ -1,4 +1,4 @@
-我们有两个入口`async_event` `sync_event`, 它们都会走到`async_send_with_callback`
+我们有两个入口`async_event` `sync_event`, 它们都会走到[async_send_with_callback](#async_send_with_callback)
 ```rs
 #[no_mangle]
 pub extern "C" fn async_event(port: i64, input: *const u8, len: usize) {
@@ -23,7 +23,9 @@ pub extern "C" fn async_event(port: i64, input: *const u8, len: usize) {
     });
 }
 ```
+<span id="async_send_with_callback"></span>
 * async_send_with_callback
+
 ```rs
 EventDispatcher::async_send_with_callback(dispatcher, request,callback)
 join_handle = dispatch.runtime.spawn(async move {
@@ -72,6 +74,8 @@ flowy_user::event_map::create(user_session)[#module]
 flowy_folder::event_map::create(folder_manager)
 
 ```
+
+简单来说, 就是通过event来给map添加 {event, wrap(handler) }
 
 ```rs
 event(e,handler){//validate
