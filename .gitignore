@@ -1,3 +1,8 @@
 hosts
-hosts-test
-debug.hosts
+# hosts-test
+# debug.hosts
+# *.hosts
+*hosts*
+# *.hosts
+# hosts-*
+# *-hosts

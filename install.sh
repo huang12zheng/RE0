@@ -4,6 +4,7 @@ ansible-galaxy install gantsign.visual-studio-code
 ansible-galaxy install gantsign.oh-my-zsh
 # ansible-galaxy install ansible-netplan,v0.2.0
 ansible-galaxy install mrlesmithjr.netplan
+# ansible-galaxy install trallnag.kubectx
 
 # ansible-playbook -i hosts clash_install.yaml &
 # ansible-playbook -i hosts docker_install.yaml &

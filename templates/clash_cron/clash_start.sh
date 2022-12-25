@@ -9,4 +9,4 @@ if [ -z "$isRun" ]; then
     /home/ubuntu/clash/clash -d /home/ubuntu/clash/
 fi
 # [ -n "$isRun" ] && export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
-[ -n "$isRun" ] && export HTTP_PROXY=http://127.0.0.1:7890 HTTPS_PROXY=http://127.0.0.1:7890
+[ -n "$isRun" ] && export HTTP_PROXY=http://127.0.0.1:7890 HTTPS_PROXY=http://127.0.0.1:7890 no_proxy=10.0.0.0/8,192.168.0.0/16,127.0.0.0/8,172.16.0.0/16

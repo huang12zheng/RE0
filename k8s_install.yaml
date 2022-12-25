@@ -72,6 +72,7 @@
       synchronize:
         src: templates/.kubectl_aliases
         dest: /home/{{ansible_ssh_user}}/.kubectl_aliases
+    # ansible-playbook -i test.hosts k8s_install.yaml --start-at-task 'alias file'
     - name: alias set
       blockinfile:
         marker: "# {mark} K8S ALIAS SET"
@@ -85,3 +86,14 @@
           source <(kubectl completion zsh)
           export SNAP="/snap/microk8s/current"
           export SNAP_DATA="/var/snap/microk8s/current"
+          
+          if command -v microk8s>/dev/null; then
+              # ${KUBE_PS1_BINARY} config current-context ## can't handle
+              KUBE_PS1_BINARY=microk8s.kubectl
+              if [ ! -f $HOME/.kube/config ]; then
+                  microk8s config>$HOME/.kube/config
+              elif [ -z "`cat $HOME/.kube/config|grep microk8s`" ]; then
+                  echo "There is no microk8s config"
+                  echo "please add info of \`microk8s config\`"
+              fi
+          fi

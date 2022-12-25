@@ -7,7 +7,7 @@
     set_fact:
       isDesktop: "{{DesktopInfo.stderr == ''}}"
 - import_playbook: clash_install.yaml
-- import_playbook: chrome_install.yaml
+# - import_playbook: chrome_install.yaml
 - hosts: ubuntu
   tasks:
     - name: snap proxy
@@ -17,7 +17,10 @@
         line: export SYSTEMD_EDITOR="/bin/vim"
     - shell: sudo systemctl restart snapd
       become: true
-
+- hosts: ubuntu
+  tasks:
+    - shell: git config --global url."https://{{GITHUB_NAME}}:{{GITHUB_TOKEN}}@github.com/".insteadOf "https://github.com/"
+# https://stackoverflow.com/questions/47617432/docker-change-gitconfig-with-token-for-private-repo-access
 - hosts: ubuntu
   roles:
     - role: gantsign.git_user
@@ -26,6 +29,6 @@
         git_user_name: huang12zheng
         git_user_email: 805104533@qq.com
         git_user_force: no
-- import_playbook: vscode_install.yaml
+# - import_playbook: vscode_install.yaml
 - import_playbook: ohmyzsh_install.yaml
-- import_playbook: k8s_install.yaml
+# - import_playbook: k8s_install.yaml
