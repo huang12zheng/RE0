@@ -17,18 +17,60 @@
           visual_studio_code_extensions:
             - streetsidesoftware.code-spell-checker
             - wholroyd.jinja
-            - ms-python.python
-            - zbr.vscode-ansible
+            # - ms-python.python
+            # - zbr.vscode-ansible
             - ms-vscode-remote.remote-ssh
-            - be5invis.toml
-            - zbr.vscode-ansible
-            - redhat.vscode-yaml
+            - ms-vscode-remote.remote-containers
+            - bungcip.better-toml
+            - redhat.
+            - rust-lang.rust-analyzer
+            - Nash.awesome-flutter-snippets
+            - aaron-bond.better-comments
+            - jeff-hykin.better-dockerfile-syntax
+            - MS-CEINTL.vscode-language-pack-zh-hans
+            - vivaxy.vscode-conventional-commits
+            - serayuzgur.crates
+            - usernamehw.errorlens
+            - Dart-Code.flutter
+            - circlecodesolution.ccs-flutter-color
+            - robert-brunhage.flutter-riverpod-snippets
+            - eamodio.gitlens
+            - rsbondi.highlight-words
+            - mitsuhiko.insta
+            - kokakiwi.vscode-just
+            - yzhang.markdown-all-in-one
           visual_studio_code_settings_overwrite: yes
           visual_studio_code_settings: {
             "editor.rulers": [80, 100, 120],
             "editor.renderWhitespace": true,
+            "editor.suggestSelection": "first",
+            "editor.formatOnSave": true,
+            "editor.formatOnType": true,
+            "dartImport.fixOnSave": true,
+            "dart.debugSdkLibraries": true,
             "files.associations": {
               "Vagrantfile": "ruby"
-            }
+            },
+            "rust-analyzer.linkedProjects": ["./native/Cargo.toml"],
+            "rust-analyzer.lens.enumVariantReferences": true,
+            "rust-analyzer.lens.references": true,
+            "rust-analyzer.lens.methodReferences": true,
+            "rust-analyzer.lens.references.enumVariant.enable": true,
+            "rust-analyzer.inlayHints.lifetimeElisionHints.enable": "skip_trivial",
+            "rust-analyzer.inlayHints.lifetimeElisionHints.useParameterNames": true,
+            "rust-analyzer.inlayHints.maxLength": 50,
+            "rust-analyzer.inlayHints.reborrowHints.enable": "always",
+            "rust-analyzer.hover.actions.references.enable": true,
+            "rust-analyzer.workspace.symbol.search.kind": "all_symbols",
+            "rust-analyzer.lens.references.trait.enable": true,
+            "search.baseUrl": "https://pub.flutter-io.cn/",
+            "terminal.integrated.profiles.linux": {
+              "zsh": {
+                "path": "zsh"
+              }
+            },
+            "terminal.integrated.defaultProfile.linux": "zsh",
+            "http.proxySupport": "on",
+
           }
       when: isDesktop
