@@ -34,28 +34,7 @@
 <td>minio</td><td>juicefs</td><td>longhorn</td>
 </tr>
 </table>
-应用开发: 
-<table>
-<tr>
-<td>flutter</td><td>rust-flutter-bridge</td><td>github action</td><td>material design</td>
-</tr>
-<tr>
-</td><td>riverpod</td><td>bloc</td><td>
-</tr>
-</table>
 
-基本技能:
-<table>
-
-</td><td>git</td><td>vscode-plugin</td><td>vscode-server</td><td>google</td><td>zsh</td>
-</table>
-操作系统: alpine, ubuntu, nixos
-<table>
-其它: 
-
-<td>rust</td><td>node</td><td>Ros2</td><td>joinquant</td><td>DeepLearn</td><td>nonebot</td><td>libp2p</td><td>substrate</td><td>surrealdb</td><td>seaorm</td>
-
-</table>
 ## 开源pr
 * microk8s
 * rust-flutter-bridge
