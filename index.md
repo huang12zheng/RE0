@@ -18,8 +18,8 @@
 </details>
 
 ## 职业技能
-<table>
 运维: 
+<table>
 <tr>
     <td>microk8s</td><td>helmfile</td><td>k9s</td><td>Dockerfile</td>
 </tr>
@@ -33,8 +33,9 @@
 </td><td>PXE</td><td>dnsmasq</td>
 <td>minio</td><td>juicefs</td><td>longhorn</td>
 </tr>
-<table>
+</table>
 应用开发: 
+<table>
 <tr>
 <td>flutter</td><td>rust-flutter-bridge</td><td>github action</td><td>material design</td>
 </tr>
@@ -42,8 +43,9 @@
 </td><td>riverpod</td><td>bloc</td><td>
 </tr>
 </table>
-<table>
+
 基本技能:
+<table>
 
 </td><td>git</td><td>vscode-plugin</td><td>vscode-server</td><td>google</td><td>zsh</td>
 </table>
