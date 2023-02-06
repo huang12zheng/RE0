@@ -32,7 +32,7 @@
         boot-on Plot, end the shutdown, ZABBIX data recording
         Modification of kernel parameters, removal of reserved space,16T hard disk formatting Settings, script selection,NTFS to Linux, verification of actual results based on performance data, handle file integrity, crontab and state driving, task optimization
     ```
-+ 202104-202105 Unemployed, financial data analysis
++ 202104-202105  financial data analysis
     ```
     joinquant(python)
     Filter Some Info:
@@ -111,12 +111,12 @@ Deep learning
 tensoflow
 Cornerstone for Machine Learning (National Taiwan University)
 ```
-+ 201711-201802 Unemployed, financial data analysis and quantitative transaction
++ 201711-201802  financial data analysis and quantitative transaction
 ```
 joinquant(python)
 Calculation of historical ROE of individual stocks, verification of valuation methods, market prediction (deduction price)
 ```
-+ 201707-201711 Unemployed, task management system
++ 201707-201711  task management system
 ```
 egg,angular
 ```

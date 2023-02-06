@@ -16,5 +16,4 @@
 9. s2n-quic
 10. Substrate 
 11. [异步重试(非rust)](https://www.bilibili.com/video/BV1y54y1v74d?spm_id_from=333.999.list.card_archive.click)
-12. 微服务
 13. yrs(yjs) 文档协同同步

@@ -1,4 +1,5 @@
 我们有两个入口`async_event` `sync_event`, 它们都会走到[async_send_with_callback](#async_send_with_callback)
+We have two enterence'async_event' 'sync_event' and they both go to [async_send_with_callback](#async_send_with_callback)
 ```rs
 #[no_mangle]
 pub extern "C" fn async_event(port: i64, input: *const u8, len: usize) {
@@ -40,6 +41,14 @@ Box::pin(async move {
 > ModuleMap is as_module_map(module_factory())
 > 然后是 as_module_map(Vec<Module>), 请 List 中每个元素 inflat化, [{1.1,1.2},{2}]-> ,{1.1,1.2,1.3}
 > module_factory 又是什么?  Vec<Module>  就是下面的`mk_modules`以及展开的好多东西. 主要是: [Module::new()这里](#module)
+
+> pay attention to (service_ctx)**
+> Simply, service is' DispatchService{module_map} '
+> ModuleMap is as_module_map(module_factory())
+> then as_module_map is (Vec < Module >), inflat List each element , [{1.1, 1.2}, {2},...] - > {1.1, 1.2, 1.3,...}
+> what is module_factory? Vec<Module> is the following 'mk_modules' and a lot of things that expand. [Module::new() here](# Module)
+
+
 ```rust
 let dispatcher = Arc::new(EventDispatcher::construct(runtime, || {
     mk_modules(
@@ -52,7 +61,7 @@ let dispatcher = Arc::new(EventDispatcher::construct(runtime, || {
     )
 }));
 ```
-<span id="module">跳转到的地方</span>
+<span id="module">Module</span>
 
 ```rs
 flowy_user::event_map::create(user_session)[#module]
@@ -76,6 +85,7 @@ flowy_folder::event_map::create(folder_manager)
 ```
 
 简单来说, 就是通过event来给map添加 {event, wrap(handler) }
+Simply add {event, wrap(handler)} to a map using an event.
 
 ```rs
 event(e,handler){//validate
@@ -86,6 +96,42 @@ event(e,handler){//validate
 ...
 
 ----
+UserSession.sign_in >> notify_login >> UserNotifier.send() >> broadcast::Sender<UserStatus> 
+=> subscribe_user_status
+=> _start_listening(){
+    listen_on_websocket()
+    _listen_user_status(); 
+}
+
+* 关于 protobuf
+在 UserCloudService.sign_in { user_sign_in_request } 里
+```rs
+pub async fn user_sign_in_request(params: SignInParams, url: &str) -> Result<SignInResponse, ServerError> {
+    let response = request_builder()
+        .post(&url.to_owned())
+        .protobuf(params)?
+        .response()
+        .await?;
+    Ok(response)
+}
+```
+
+> pub fn sign_in_url(&self) -> String {
+>   format!("{}/api/auth", self.base_url())
+> }
+> let base = include_str!("../configuration/base.yaml");
+----
+注意到 FlowySDK.new里有
+local_server = mk_local_server(&config.server_config);
+user_session = mk_user_session(&config, &local_server, &config.server_config);  /// 里面是 
+    cloud_service = UserDepsResolver::resolve
+
+----
 
 
 不理解为什么要这么复杂, 直接用web框架不可以吗?
+url map to handle_fn
+用 macro 生成代码 Rust 到 rust 生成
+没有依赖注入, 构造对象 写起来复杂
+
+
