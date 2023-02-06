@@ -76,16 +76,19 @@ Operation and maintenance:
 |gitea|drone|shell|argocd|
 |PXE|dnsmasq|
 |minio|juicefs|longhorn|
-Application development: 
+
+Application development:
 | | | | |
 |-|-|-|-|
 |flutter|rust-flutter-bridge|github action|material design|
 |riverpod|bloc|
+
 Basic skill:
 | | | | |
 |-|-|-|-|
 |git|vscode-plugin|vscode-server|google|
 |zsh|
+
 OS: alpine,ubuntu,nixos
 Other: 
 | | | | |
