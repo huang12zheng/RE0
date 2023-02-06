@@ -89,7 +89,8 @@ Basic skill:
 |git|vscode-plugin|vscode-server|google|
 |zsh|
 
-OS: alpine,ubuntu,nixos
+OS: alpine, ubuntu, nixos
+
 Other: 
 | | | | |
 |-|-|-|-|
