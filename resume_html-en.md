@@ -68,44 +68,31 @@ share_list
 
 [miscellaneous](./miscellaneous.md)
 ## Professional skills
-<table>
 Operation and maintenance: 
-<tr>
-    <td>microk8s</td><td>helmfile</td><td>k9s</td><td>Dockerfile</td>
-</tr>
-<tr>
-<td>tencent cloud</td>
-<td>ansible</td>
-<tr>
-<td>gitea</td><td>drone</td><td>argocd</td>
-</tr>
-<tr>
-</td><td>PXE</td><td>dnsmasq</td>
-<td>minio</td><td>juicefs</td><td>longhorn</td>
-</tr>
-<table>
+| | | | |
+|-|-|-|-|
+|microk8s|helmfile|k9s|yaml|
+|Dockerfile|tencent cloud|ansible|
+|gitea|drone|shell|argocd|
+|PXE|dnsmasq|
+|minio|juicefs|longhorn|
 Application development: 
-<tr>
-<td>flutter</td><td>rust-flutter-bridge</td><td>github action</td><td>material design</td>
-</tr>
-<tr>
-</td><td>riverpod</td><td>bloc</td><td>
-</tr>
-</table>
-<table>
+| | | | |
+|-|-|-|-|
+|flutter|rust-flutter-bridge|github action|material design|
+|riverpod|bloc|
 Basic skill:
-
-</td><td>git</td><td>vscode-plugin</td><td>vscode-server</td><td>google</td><td>zsh</td>
-</table>
-Os: alpine, ubuntu, nixos
-<table>
+| | | | |
+|-|-|-|-|
+|git|vscode-plugin|vscode-server|google|
+|zsh|
+OS: alpine,ubuntu,nixos
 Other: 
-
-<td>rust</td><td>node</td><td>Ros2</td><td>joinquant</td><td>DeepLearn</td><td>nonebot</td><td>libp2p</td><td>substrate</td><td>surrealdb</td><td>seaorm</td>
-
-</table>
-
-
+| | | | |
+|-|-|-|-|
+|[rust](system/rust/index.md)|node|Ros2|python|
+|joinquant|DeepLearn|nonebot|libp2p|
+|substrate|surrealdb|seaorm|
 ## Self-evaluation
 ```
 Strong sense of responsibility, willing to study and collect information when meeting difficulties, and able to solve technical problems independently

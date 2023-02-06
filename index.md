@@ -19,21 +19,38 @@
 
 ## 职业技能
 运维: 
-<table>
-<tr>
-    <td>microk8s</td><td>helmfile</td><td>k9s</td><td>Dockerfile</td>
-</tr>
-<tr>
-<td>tencent cloud</td>
-<td>ansible</td>
-<tr>
-<td>gitea</td><td>drone</td><td>argocd</td>
-</tr>
-<tr>
-</td><td>PXE</td><td>dnsmasq</td>
-<td>minio</td><td>juicefs</td><td>longhorn</td>
-</tr>
-</table>
+
+| | | | |
+|-|-|-|-|
+|microk8s|helmfile|k9s|yaml|
+|Dockerfile|tencent cloud|ansible|
+|gitea|drone|shell|argocd|
+|PXE|dnsmasq|
+|minio|juicefs|longhorn|
+
+应用开发: 
+
+| | | | |
+|-|-|-|-|
+|flutter|rust-flutter-bridge|github action|material design|
+|riverpod|bloc|
+
+基本技能:
+
+| | | | |
+|-|-|-|-|
+|git|vscode-plugin|vscode-server|google|
+|zsh|
+
+操作系统: alpine,ubuntu,nixos
+
+其它: 
+
+| | | | |
+|-|-|-|-|
+|[rust](system/rust/index.md)|node|Ros2|python|
+|joinquant|DeepLearn|nonebot|libp2p|
+|substrate|surrealdb|seaorm|
 
 ## 开源pr
 * microk8s
