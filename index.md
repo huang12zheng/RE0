@@ -18,32 +18,42 @@
 </details>
 
 ## 职业技能
-
+<table>
 运维: 
-| | | | |
-|-|-|-|-|
-|microk8s|helmfile|k9s|yaml|
-|Dockerfile|tencent cloud|ansible|
-|gitea|drone|shell|argocd|
-|PXE|dnsmasq|
-|minio|juicefs|longhorn|
+<tr>
+    <td>microk8s</td><td>helmfile</td><td>k9s</td><td>Dockerfile</td>
+</tr>
+<tr>
+<td>tencent cloud</td>
+<td>ansible</td>
+<tr>
+<td>gitea</td><td>drone</td><td>argocd</td>
+</tr>
+<tr>
+</td><td>PXE</td><td>dnsmasq</td>
+<td>minio</td><td>juicefs</td><td>longhorn</td>
+</tr>
+<table>
 应用开发: 
-| | | | |
-|-|-|-|-|
-|flutter|rust-flutter-bridge|github action|material design|
-|riverpod|bloc|
+<tr>
+<td>flutter</td><td>rust-flutter-bridge</td><td>github action</td><td>material design</td>
+</tr>
+<tr>
+</td><td>riverpod</td><td>bloc</td><td>
+</tr>
+</table>
+<table>
 基本技能:
-| | | | |
-|-|-|-|-|
-|git|vscode-plugin|vscode-server|google|
-|zsh|
-操作系统: alpine,ubuntu,nixos
+
+</td><td>git</td><td>vscode-plugin</td><td>vscode-server</td><td>google</td><td>zsh</td>
+</table>
+操作系统: alpine, ubuntu, nixos
+<table>
 其它: 
-| | | | |
-|-|-|-|-|
-|[rust](system/rust/index.md)|node|Ros2|python|
-|joinquant|DeepLearn|nonebot|libp2p|
-|substrate|surrealdb|seaorm|
+
+<td>rust</td><td>node</td><td>Ros2</td><td>joinquant</td><td>DeepLearn</td><td>nonebot</td><td>libp2p</td><td>substrate</td><td>surrealdb</td><td>seaorm</td>
+
+</table>
 ## 开源pr
 * microk8s
 * rust-flutter-bridge
