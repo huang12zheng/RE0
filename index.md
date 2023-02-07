@@ -6,6 +6,7 @@
 + [兴趣](Interests.md)
 + 身份证号: 352225199208150018
 + 住址: 杭州萧山闻堰滨江东方海岸
++ https://github.com/huang12zheng
 
 ## 教育经历
 2011-201507 湖南师大(211) 信息与计算科学 本科学士
@@ -32,10 +33,12 @@
 4. 了解线段树,并查集,最大流最小割等数据结构
 5. 了解DDD,设计模式
 6. DeepLearn相关的基本数学知识
+7. 了解[web3](system/web3.md)
 
 其它:
 了解rust analyzer,substrate, salsa, seaorm等
 能通过darling或proc_macro编写属性宏
+了解flink,hdfs,kafka
 
 ## 职业倾向
 
