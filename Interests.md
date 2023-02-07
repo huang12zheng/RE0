@@ -1,13 +1,12 @@
 * flutter:
-  * Efficiency tool
-  * p2p app
+  * p2p, git, local-storage
   * adaptive
   * riverpod
   * rust-flutter-bridge
 * IaC:
   + PXE
   + dynamic manage bmc info
-  + setup kubevirt
+  + kubevirt
   + argocd
 + rust:
   + git

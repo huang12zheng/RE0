@@ -5,79 +5,62 @@
 + 邮箱:805104533@qq.com
 + [兴趣](Interests.md)
 + 身份证号: 352225199208150018
++ 住址: 杭州萧山闻堰滨江东方海岸
 
 ## 教育经历
-<details>
-<summary>
 2011-201507 湖南师大(211) 信息与计算科学 本科学士
-</summary>
-<pre><code>
-  2013 ACM亚州区杭州站铜牌
-  2014 中科大保研名额
-</code></pre>
-</details>
+* 2013 ACM亚州区杭州站铜牌
+* 2014 中科大保研名额
+
+
 
 ## 职业技能
-运维: 
+运维: 熟悉k8s,helmfile,腾讯云
 
-| | | | |
-|-|-|-|-|
-|microk8s|helmfile|k9s|yaml|
-|Dockerfile|tencent cloud|ansible|
-|gitea|drone|shell|argocd|
-|PXE|dnsmasq|
-|minio|juicefs|longhorn|
-
-应用开发: 
-
-| | | | |
-|-|-|-|-|
-|flutter|rust-flutter-bridge|github action|material design|
-|riverpod|bloc|
+应用开发:
+1. 能借用vscode-debug,tracing,检查和分析rust,及flutter的问题.
+2. 能编写github action,或drone生成对应的产物
+3. 熟悉material design
+4. 熟悉riverpod,bloc等状态管理库
+5. 熟悉surrealdb,seaorm
+6. 了解crdt[yrs,automerge]
 
 基本技能:
+1. 能编写vscode-plugin插件
+2. google
+3. git的基本使用
+4. 了解线段树,并查集,最大流最小割等数据结构
+5. 了解DDD,设计模式
+6. DeepLearn相关的基本数学知识
 
-| | | | |
-|-|-|-|-|
-|git|vscode-plugin|vscode-server|google|
-|zsh|
+其它:
+了解rust analyzer,substrate, salsa, seaorm等
+能通过darling或proc_macro编写属性宏
 
-操作系统: alpine,ubuntu,nixos
-
-其它: 
-
-| | | | |
-|-|-|-|-|
-|[rust](system/rust/index.md)|node|Ros2|python|
-|joinquant|DeepLearn|nonebot|libp2p|
-|substrate|surrealdb|seaorm|
-
-## 开源pr
-* microk8s
-* rust-flutter-bridge
-* graphql_flutter
-* flutter_data
-* polars
-* Dart-Data-Class-Generator
-* mpflutte
-* fluidframework
-* melos
-* mason
-* ...
 ## 职业倾向
 
-* flutter
+* flutter(效率工具,知识内容)
 * rust(存储相关)
-* gitops
 
 ## 实践经历
 
 [杂项](./miscellaneous-cn.md)
-<details>
-<summary>
-202105-202106 800台机器的运维(奇亚chia)[币价下跌,自动化完成,公司解散]
-</summary>
-<pre><code>
+
+* 搭建环境
+1. 编写PXE脚本,生成关于alpine netboot的iso或kpxe文件.
+2. 使用dnsmasq prxoy,方便在dhcp结束后,发送启动文件和lbk文件.
+3. ansible 调用 role:wakeonlan
+4. 阅读terraform上的package,依定义编写代码
+5. 安装docker,k3s,helm,启动gitea,drone,minio.
+6. 依据纠删码原理,设置minio服务器及derive数量.
+7. JuiceFS使用redis,生成POXIS路径.
+8. 启动vscode-server, 加载自定义的mod.
+9. 在ubuntu上编译sccache,并将rust编译任务转发到远程
+10. 编写jsonnet脚本
+11. 适配argocd.
+
+* 202105-202106 800台机器的运维(奇亚chia)[币价下跌,自动化完成,公司解散]
+
 win:
     装机,人员培训,人员工作情况信息共享(用腾讯文档)
 linux:
@@ -87,56 +70,41 @@ linux:
 其它:
     尝试MicroK8S来控制机器，但因为带宽限制,不适合此项目
 
-</code></pre>
-</details>
 
-<details>
-<summary>
-201910-202001 链群(左象)(破产) flutter工程师
-</summary>
-<pre><code>
-1. 进行300次 PR
-2. 写一些包
-ddd_flutter
-share_list
-1. 协助测试人员了解flutter,编写widget test
-2. 尝试响应式设计
-3. 尝试从fish_redux迁移到bloc
+* 201910-202001 链群(左象)(破产) flutter工程师
+
+1. 将fish_redux替换为bloc,从而减少样板代码.
+2. 协助测试人员了解flutter,编写widget test.
+3. 尝试响应式设计
 
 工作中实现的业务:
-1. 重构登录(分离登录验证模块,支持微信)
-2. 群组(没有分离出角色相关验证,状态太多(人员三种,群三种),没想到分9个类去写)
+1. 重构登录界面(分离登录验证模块,支持微信)
+2. 群组(使用SDK来快速实现聊天功能,设置不同的群类型,普通群员和管理员设置不同权限,以及多页面数据的同步)
 
-选择链群的原因是因为它介绍下一阶段会做内容,
-以及flutter当时公司比较少
-</code></pre>
-</details>
-<details>
+* 201505-201707 杭州恒生电子 经纪业务运营平台UF20
 
-<summary>
-201505-201707 杭州恒生电子 经纪业务运营平台UF20
-</summary>
-<pre><code>
-1. 编写软件业务文档
-2. 获取鼠标位置信息和识别控件，用于自动化测试(VB)。其本质是input->app->output
-3. 灰盒测试(oracle,delphi,c++)
-招聘时考试95分
-</code></pre>
-</details>
-201501-201505 中兴软创 图书订购系统
+1. 清算相关的业务(新股IPO,质押回购,港股通等),涉及技术:Delphi,Oracle,C++
+2. 自动化测试,获取鼠标位置信息和识别控件,涉及技术:VB
+
+* 201501-201505 中兴软创 图书订购系统
+
+
+## 开源pr
+* rust-flutter-bridge
+  1. 处理没有设置dart_decl_output时,不生成wasm相关代码的问题
+  2. 支持`pub type UserId = OwnerId;`也可以正常生成ffi代码
+* graphql_flutter
+  uuidFromObject类型转换错误
+* polars
+  表格的样式修复
+* Dart-Data-Class-Generator(一个vscode插件)
+* fluidframework
+  编写中文文档,
+  优化restWrapperP
+* ...
 
 ## 自我评价
 ```
-乐于研究和收集信息,能独立解决碰到的技术问题
-不喜欢重复劳动,会选择一些方法替代.希望做一些有长远意义的事
-一定的英文阅读能力
-```
-
-## 遗忘技能
-```
-angular,zorro,ant
-一些经典算法
-traefik,sentry,crdt,ot算法
-ML,CPM-Distill,vscode-plugin
-kubebuilder,node,tidb
+211重点院校本科学士,熟悉数据结构与基本算法,自学能力强
+掌握多种工具,能使用rust,flutter,k8s搭建应用
 ```
