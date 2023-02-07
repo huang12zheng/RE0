@@ -16,15 +16,17 @@
 
 
 ## 职业技能
-运维: 熟悉k8s,helmfile,腾讯云
+运维:
+1. 熟悉k8s,helmfile,腾讯云
+2. 能编写github action,或drone生成对应的产物
+3. 使用sccache支持分布式编译或产物cache
 
 应用开发:
 1. 能借用vscode-debug,tracing,检查和分析rust,及flutter的问题.
-2. 能编写github action,或drone生成对应的产物
-3. 熟悉material design
-4. 熟悉riverpod,bloc等状态管理库
-5. 熟悉surrealdb,seaorm
-6. 了解crdt[yrs,automerge]
+2. 熟悉material design
+3. 熟悉riverpod,bloc等状态管理库
+4. 熟悉surrealdb,seaorm
+5. 了解crdt[yrs,automerge]
 
 基本技能:
 1. 能编写vscode-plugin插件
@@ -76,13 +78,13 @@ linux:
 
 * 201910-202001 链群(左象)(破产) flutter工程师
 
-1. 将fish_redux替换为bloc,从而减少样板代码.
-2. 协助测试人员了解flutter,编写widget test.
-3. 尝试响应式设计
+  1. 将fish_redux替换为bloc,从而减少样板代码.
+  2. 协助测试人员了解flutter,编写widget test.
+  3. 尝试响应式设计
 
-工作中实现的业务:
-1. 重构登录界面(分离登录验证模块,支持微信)
-2. 群组(使用SDK来快速实现聊天功能,设置不同的群类型,普通群员和管理员设置不同权限,以及多页面数据的同步)
+  工作中实现的业务:
+  1. 重构登录界面(分离登录验证模块,支持微信)
+  2. 群组(使用SDK来快速实现聊天功能,设置不同的群类型,普通群员和管理员设置不同权限,以及多页面数据的同步)
 
 * 201505-201707 杭州恒生电子 经纪业务运营平台UF20
 
