@@ -22,11 +22,11 @@
 3. 使用sccache支持分布式编译或产物cache
 
 应用开发:
-1. 能借用vscode-debug,tracing,检查和分析rust,及flutter的问题.
-2. 熟悉material design
-3. 熟悉riverpod,bloc等状态管理库
-4. 熟悉surrealdb,seaorm
-5. 了解crdt[yrs,automerge]
+1. 能借用tracing日志,检查和分析rust.用lldb+pid断点调试.
+2. 熟悉flutter开发.
+3. 熟悉material design
+4. 熟悉riverpod,bloc等状态管理库
+
 
 基本技能:
 1. 能编写vscode-plugin插件
@@ -34,13 +34,15 @@
 3. git的基本使用
 4. 了解线段树,并查集,最大流最小割等数据结构
 5. 了解DDD,设计模式
-6. 理解DeepLearn相关的基本数学知识,及CNN,BERT,Transformer
+6. 理解DeepLearn相关的基本数学知识,及CNN,池化,BERT,Transformer
 7. 了解[web3](system/web3.md)
 
 其它:
-1. 了解rust analyzer,substrate, salsa, seaorm, tokio等
+1. 熟悉surrealdb,seaorm
 2. 能通过darling或proc_macro编写属性宏
-3. 了解flink,hdfs,kafka
+3. 了解rowan, substrate, salsa, seaorm, tokio, rust-libp2p 等
+4. 了解flink,hdfs,kafka等
+5. 了解crdt[yrs,automerge]
 
 ## 职业倾向
 
@@ -51,7 +53,7 @@
 
 [杂项](./miscellaneous-cn.md)
 
-* 搭建环境
+* 从裸机搭建环境
 1. 编写PXE脚本,生成关于alpine netboot的iso或kpxe文件.
 2. 使用dnsmasq prxoy,方便在dhcp结束后,发送启动文件和lbk文件.
 3. ansible 调用 role:wakeonlan
@@ -110,6 +112,6 @@ linux:
 
 ## 自我评价
 ```
-211重点院校本科学士,熟悉数据结构与基本算法,自学能力强
+211重点院校本科学士,熟悉数据结构与基本算法.自学能力强
 掌握多种工具,能使用rust,flutter,k8s搭建应用
 ```

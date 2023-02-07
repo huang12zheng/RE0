@@ -4,102 +4,68 @@
   + Mobile phone: 17682318150
   + E-mail: 805104533@qq.com
   + [Interests](Interests.md)
+  + https://github.com/huang12zheng
+  + China
 
 ## Educational experience
-<details>
-<summary>
 2011-2015 Hunan Normal University, Information, and Computing Science, Bachelor's Degree
-</summary>
-<pre><code>Bronze medal in 2013 ACM Asian District Hangzhou Station
-2014 University of Science and Technology of China quota for postgraduate study
-Mathematical modeling, ACM
-A Poisson distribution and singularity model
-</code></pre>
-</details>
+* Bronze medal in 2013 ACM Asian District Hangzhou Station
+
+## Professional skills
+Application development:
+1. flutter, rust
+2. status management package: riverpod and bloc
+
+Operation and maintenance:
+1. k8s,helmfile
+2. github action, or drone
+
+Know a little:
+1. surrealdb, seaorm
+2. proc_macro in rust with darling
+3. rowan, substrate, salsa, seaorm, tokio, rust-libp2p
+4. flink, hdfs, kafka ...
+5. crdt[yrs,automerge]
+6. Understand segment tree, disjoint-set data structure and other data structures
+7. pytorch, Transformer
 
 ## Practical experience
 
-<details>
-<summary>
-202105-202106 CHIA Operation (800 machines)
-</summary>
-<pre><code>
-win:
-    Installing, information synchronization of shared documents, personnel training, PS
-Linux:
-    Fixed IP, sshpass, ansible, shell, swar (python)
-    boot-on Plot, end the shutdown, ZABBIX data recording
-    Modification of kernel parameters, removal of reserved space,16T hard disk formatting Settings, script selection, NTFS to Linux, verification of actual results based on performance data, handling file integrity, crontab and state driving, task optimization
-other:
-    try MicroK8S for controlling the machine, and it is with bandwidth failing
+* setup from metal
 
-</code></pre>
-</details>
+1. Write a PXE script to generate an iso or kpxe file about alpine netboot.
+2. Use dnsmasq proxy to send startup files and lbk files after DHCP ends.
+3. ansible calls role:wakeonlan
+4. Read the package on terraform and write the code as defined
+5. Install docker,k3s and helm, and start gitea, drone and minio.
+6. Set the number of minio servers and derive based on the erasure code principle.
+7. JuiceFS uses redis to generate the POXIS path.
+8. Start vscode-server and load custom mods.
+9. Compile sccache on ubuntu and forward the rust compilation task to a remote location
+10. Write jsonnet scripts
+11. Adapt argocd.
 
+* 201910-202001 Chain Group, Flutter
+  1. Replace fish_redux with bloc to reduce boilerplate code.
+  2. Assist testers to understand flutter and write widget tests.
+  3. Try responsive design
 
-
-
-<details>
-<summary>
-201910-202001 Chain Group, Flutter
-</summary>
-<pre><code>
-1. do about 300 PR
-2. write some package
-ddd_flutter
-share_list
-</code></pre>
-</details>
+  +  Business implemented at work:
+  1. Reconstruct the login interface (Separate the login verification module and support wechat)
+  2. Groups (Use SDK to quickly realize the chat function, set different group types, set different permissions for common group members and administrators, and synchronize multi-page data)
 
 
+* 201505-201707 Hangzhou Hang Seng electronic brokerage business, UF20
+  1. Software Documentation
+  2. Get the location information of the mouse and identify controls, for Automated Testing (VB). Its essence is input->app->output
+  3. Gray box testing (Oracle, Delphi, C++)
 
-
-<details>
-<summary>
-201505-201707 Hangzhou Hang Seng electronic brokerage business, UF20
-</summary>
-<pre><code>
-1. Software Documentation
-2. Get the location information of the mouse and identify controls, for Automated Testing (VB). Its essence is input->app->output
-3. Gray box testing (Oracle, Delphi, C++)
-</code></pre>
-</details>
-201501-201505 ZTE Software Distributed Book Ordering System
+* 201501-201505 ZTE Software Distributed Book Ordering System
 
 [miscellaneous](./miscellaneous.md)
-## Professional skills
-Operation and maintenance: 
-| | | | |
-|-|-|-|-|
-|microk8s|helmfile|k9s|yaml|
-|Dockerfile|tencent cloud|ansible|
-|gitea|drone|shell|argocd|
-|PXE|dnsmasq|
-|minio|juicefs|longhorn|
 
-Application development:
-| | | | |
-|-|-|-|-|
-|flutter|rust-flutter-bridge|github action|material design|
-|riverpod|bloc|
-
-Basic skill:
-| | | | |
-|-|-|-|-|
-|git|vscode-plugin|vscode-server|google|
-|zsh|
-
-OS: alpine, ubuntu, nixos
-
-Other: 
-| | | | |
-|-|-|-|-|
-|[rust](system/rust/index.md)|node|Ros2|python|
-|joinquant|DeepLearn|nonebot|libp2p|
-|substrate|surrealdb|seaorm|
 ## Self-evaluation
 ```
-Strong sense of responsibility, willing to study and collect information when meeting difficulties, and able to solve technical problems independently
-Do not like replaceable repetitive work, will choose some methods to replace. I want to do something that has long-term significance
-Good English reading ability
+Bachelor degree from key university, familiar with data structure and basic algorithm. strong self-learning ability.
+Master multiple tools and build applications with rust,flutter,k8s
 ```
