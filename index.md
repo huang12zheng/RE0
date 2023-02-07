@@ -34,13 +34,13 @@
 3. git的基本使用
 4. 了解线段树,并查集,最大流最小割等数据结构
 5. 了解DDD,设计模式
-6. DeepLearn相关的基本数学知识
+6. 理解DeepLearn相关的基本数学知识,及CNN,BERT,Transformer
 7. 了解[web3](system/web3.md)
 
 其它:
-了解rust analyzer,substrate, salsa, seaorm等
-能通过darling或proc_macro编写属性宏
-了解flink,hdfs,kafka
+1. 了解rust analyzer,substrate, salsa, seaorm, tokio等
+2. 能通过darling或proc_macro编写属性宏
+3. 了解flink,hdfs,kafka
 
 ## 职业倾向
 
