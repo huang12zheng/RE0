@@ -11,4 +11,5 @@
 + rust:
   + git
   + surrealdb
+  + ffi for flutter
 + AI
