@@ -1,5 +1,28 @@
 我了解过`substrate`源码,`polkadot`的上游.polkadot可以看为level0,或者说是交换机,而别的链看为是一个个光模块.
 
+零知识证明:
+1. 将业务抽象为电路,生成R1CS(会计算),生成QAP.这是一个整除问题,是一个NP完全问题.
+```sh
+zokrates compile -i root.zok
+# output: abi.json out  out.r1cs 
+```
+
+```sh
+zokrates compute-witness -a
+# output: out.wtns witness
+# 和setup 可交换
+zokrates setup
+# output: verification.key proving.key
+# proving.key 链下, verification.key链上
+zokrates generate-proof
+# output: proof.json proving.key
+# 需要out witness 
+zokrates verify
+# Performing verification...
+# PASSED
+# 只需要 proof.json  verification.key
+```
+
 区块链是一些对等网络及路由网络(没有中央机构控制网络)组成网络.分享其上的存储或外接可证明的存储.存储密码学里的私钥为Token,且存储为多份.并配合上共识算法,从而避免局部操控或恶意活动.
 > 有时候会有意外,比如raft的脑裂.
 
