@@ -16,10 +16,13 @@
 
 
 ## 职业技能
+RUST:
+1. 了解clap,tokio,serde,sccache,Polars,arrow2
+
+
 运维:
 1. 熟悉k8s,helmfile,腾讯云
 2. 能编写github action,或drone生成对应的产物
-3. 使用sccache支持分布式编译或产物cache
 
 应用开发:
 1. 能借用tracing日志,检查和分析rust.用lldb+pid断点调试.
@@ -34,7 +37,7 @@
 3. git的基本使用
 4. 了解线段树,并查集,最大流最小割等数据结构
 5. 了解DDD,设计模式
-6. 理解DeepLearn相关的基本数学知识,及CNN,池化,BERT,Transformer
+6. [DeepLearning](./system/DL.md)
 7. 了解[web3](system/web3.md)
 
 其它:
