@@ -39,6 +39,7 @@ MLP-Mixer
 
 
 ### 比较
+```
 BERT VS MAE :mask 完型填空的重要性
 ViT VS Self-Attention: 学习部分间的关系
 MoCoV1 做了什么: 对比学习问题变为字典问题(负样本),提出了动量编码,和队列
@@ -53,7 +54,7 @@ SimCLRv1提出了project,图片进入,编码器编码,project降维,算个loss.
 2. 图片数据增强(Color+裁剪),project 就是一个MLP-LR层(SimCLRv1)
 3. 特征和聚类比(SWaV)
 4. 使用ViT
-
+```
 > ChatGPT补充:
 > 1. 硬负挖掘:这是一种技术，您可以找到模型难以区分的负示例和正示例，并在这些示例上进行训练，以提高模型的辨别能力。
 > 2. 归一化:该技术涉及将特征嵌入归一化，使之具有单元范数。这可以通过使嵌入更具鉴别性来提高模型的性能。
@@ -70,6 +71,7 @@ SimCLRv1提出了project,图片进入,编码器编码,project降维,算个loss.
 > DALL.E2, 依据CLIP生成文字的特征,然后生成图片与CLIP的图特征判别. prior+层级式生成(64-256-...)
 
 多模态:
+```
 1. 文字+图片+transformer
 2. VSE,CLIP,ViLBERT,ViLT
     ViLBERT=OD+WPA+MLM+ITM
@@ -77,6 +79,7 @@ SimCLRv1提出了project,图片进入,编码器编码,project降维,算个loss.
     ViLT = MI>VE=TE
     ViLT -- MLM,ITM,WPA
     > WPA Word Patch Alignment(文本单词与图片的关系).但因为目标检测没有了,WPA就慢
+```
 > 模态交互是更重要的, 
 > 
 > ITM loss：Image Text Matching
