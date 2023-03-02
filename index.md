@@ -1,4 +1,4 @@
-[English resume](resume_html-en.md)
+<!-- [English resume](resume_html-en.md) -->
 ## 基本信息
 + 姓名: 黄政
 + 手机: 17682318150
@@ -7,54 +7,52 @@
 + 身份证号: 352225199208150018
 + 住址: 杭州萧山闻堰滨江东方海岸
 + https://github.com/huang12zheng
++ 职业技能概述: k8s, flutter, rust, 深度学习, libp2p, substrate, devops
++ 毕业于211学校, 计算数学相关, 有竞赛背景
 
 ## 教育经历
 2011-201507 湖南师大(211) 信息与计算科学 本科学士
 * 2013 ACM亚州区杭州站铜牌
 * 2014 中科大保研名额
-
+* 数学建模等获奖项
 
 
 ## 职业技能
 RUST:
 1. 了解clap,tokio,serde,sccache,Polars,arrow2
-
+2. 能通过FFI将rust生态被flutter利用
+3. 使用libp2p,构建独立网络(去中心化)
+4. 使用salsa进行增量计算
+5. 了解substrate,IBC,zokrates等
+6. 宏编程(darling,proc-macro)
+7. 了解automerge,yrs等CRDT库
 
 运维:
-1. 熟悉k8s,helmfile,腾讯云
-2. 能编写github action,或drone生成对应的产物
+1. 能依据需求,使用PXE,k8s,helmfile部署应用到腾讯云或裸机等
+2. 能编写github action,或使用drone等工具实现devops
 
 应用开发:
-1. 能借用tracing日志,检查和分析rust.用lldb+pid断点调试.
-2. 熟悉flutter开发.
-3. 熟悉material design
-4. 熟悉riverpod,bloc等状态管理库
+1. [熟悉flutter开发](system/flutter/index.md).
 
+深度学习:
+1. 能利用工具,优化大模型训练,推理.
+2. 了解领域必读论文(包括多模态,轻量模型等),了解数值分析及相关数学原理
+3. 能用rust修改或部署一些NLP下游任务
 
 基本技能:
-1. 能编写vscode-plugin插件
-2. google
-3. git的基本使用
-4. 了解线段树,并查集,最大流最小割等数据结构
-5. 了解DDD,设计模式
-6. [DeepLearning](./system/DL.md)
-7. 了解[web3](system/web3.md)
-
-其它:
-1. 熟悉surrealdb,seaorm
-2. 能通过darling或proc_macro编写属性宏
-3. 了解rowan, substrate, salsa, seaorm, tokio, rust-libp2p 等
-4. 了解flink,hdfs,kafka等
-5. 了解crdt[yrs,automerge]
+1. google,chatgpt
+2. git的基本使用
+3. 了解线段树,并查集,最大流最小割等数据结构
 
 ## 职业倾向
 
-* flutter(效率工具,知识内容)
-* rust(存储相关)
+* flutter(内容知识相关应用,深度学习相关或去中心化应用)
+* rust(实现深度学习相关生态,但更希望有开源的工具直接使用)
+* NLP(信息抽取,检索)
 
 ## 实践经历
 
-[杂项](./miscellaneous-cn.md)
+* [问答系统](system/dl/项目/train_detail.md)
 
 * 从裸机搭建环境
 1. 编写PXE脚本,生成关于alpine netboot的iso或kpxe文件.
@@ -98,6 +96,7 @@ linux:
 
 * 201501-201505 中兴软创 图书订购系统
 
+* [其余杂项](./miscellaneous-cn.md)
 
 ## 开源pr
 * rust-flutter-bridge
@@ -112,6 +111,8 @@ linux:
   编写中文文档,
   优化restWrapperP
 * ...
+
+
 
 ## 自我评价
 ```

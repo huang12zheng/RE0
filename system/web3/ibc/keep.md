@@ -1,0 +1,19 @@
+这个名为keep的Rust函数是处理MsgConnectionOpenInit类型传入消息的实现的一部分。此函数的目的是将来自ConnectionMsgProcessingResult对象的数据持久化到持久存储中。
+
+函数有两个参数:
+
+keeper:这是一个对ConnectionKeeper特性实现的可变引用。ConnectionKeeper特性定义了允许存储和检索与IBC连接相关的数据的函数。
+result: ConnectionMsgProcessingResult类型的对象，包含MsgConnectionOpenInit消息的处理结果。
+该函数首先调用keeper对象的store_connection方法，并从结果对象传递connection_id和connection_end。此方法将连接状态存储到持久存储中。
+
+接下来，该函数调用keeper对象的add_connection_to_client方法，从结果对象传递client_id和connection_id。此方法将连接与客户端关联。
+
+最后，函数返回Ok(())，表示数据已成功存储。如果在存储数据时发生错误，该函数返回带有错误值的Err。
+
+----
+每个IBC连接在两个端点之间建立，每个端点表示单独区块链网络中IBC处理程序的唯一实例。一个端点称为“源”端点，另一个端点称为“目的”端点。
+
+代码中的connection_end引用连接的源端点的状态，该状态存储在持久存储器中。此信息用于跟踪连接的当前状态，并确保在两个区块链网络之间只建立一次连接。
+
+在process函数中，reader参数用于通过调用connection_end方法并将connection_id作为参数传递来检索连接结束状态。如果已经存在具有给定connection_id的连接结束状态，则该函数返回一个错误，指示连接已经存在。
+
