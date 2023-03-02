@@ -16,9 +16,14 @@
 * 2014 中科大保研名额
 * 数学建模等获奖项
 
+## 职业倾向
+
+* flutter(内容知识相关应用,深度学习相关或去中心化应用)
+* rust(实现深度学习相关生态,但更希望有开源的工具直接使用)
+* NLP(信息抽取,检索)
 
 ## 职业技能
-RUST:
+**RUST:**
 1. 了解clap,tokio,serde,sccache,Polars,arrow2
 2. 能通过FFI将rust生态被flutter利用
 3. 使用libp2p,构建独立网络(去中心化)
@@ -27,30 +32,27 @@ RUST:
 6. 宏编程(darling,proc-macro)
 7. 了解automerge,yrs等CRDT库
 
-运维:
+**运维:**
 1. 能依据需求,使用PXE,k8s,helmfile部署应用到腾讯云或裸机等
 2. 能编写github action,或使用drone等工具实现devops
 
 应用开发:
 1. [熟悉flutter开发](system/flutter/index.md).
 
-深度学习:
-1. 能利用工具,优化大模型训练,推理.
+**深度学习:**
+1. 能利用工具,优化大模型训练,推理.有prompt模版经验
 2. 了解领域必读论文(包括多模态,轻量模型等),了解数值分析及相关数学原理
 3. 能用rust修改或部署一些NLP下游任务
 
-基本技能:
+**基本技能:**
 1. google,chatgpt
 2. git的基本使用
 3. 了解线段树,并查集,最大流最小割等数据结构
 
-## 职业倾向
-
-* flutter(内容知识相关应用,深度学习相关或去中心化应用)
-* rust(实现深度学习相关生态,但更希望有开源的工具直接使用)
-* NLP(信息抽取,检索)
-
 ## 实践经历
+> 断档期主要依据自身兴趣,与需要学习理论知识.完成内容比较杂乱,链接地址为[其余杂项](./miscellaneous-cn.md)
+
+杭州恒生电子 为 正式工作经历
 
 * [问答系统](system/dl/项目/train_detail.md)
 
@@ -95,8 +97,6 @@ linux:
 2. 自动化测试,获取鼠标位置信息和识别控件,涉及技术:VB
 
 * 201501-201505 中兴软创 图书订购系统
-
-* [其余杂项](./miscellaneous-cn.md)
 
 ## 开源pr
 * rust-flutter-bridge
