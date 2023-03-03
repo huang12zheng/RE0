@@ -3,4 +3,5 @@ markdown: GFM
 title: Resume
 github:
   is_project_page: false
+  repository_url: https://github.com/huang12zheng?tab=repositories
 # description: Resume
