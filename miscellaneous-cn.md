@@ -1,5 +1,3 @@
-<details>
-<summary>杂项</summary>
 
 202206-202302
 学习rust, surrealdb, seaorm, minio, JuiceFS, alpine, gitops, rust-flutter-bridge
@@ -91,4 +89,3 @@ ffi:
         share_list(想实现一个类似flutter_data的东西)
         了解material设计
 
-</details>
