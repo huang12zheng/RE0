@@ -6,7 +6,7 @@
 + [兴趣](Interests.md)
 + 身份证号: 352225199208150018
 + 住址: 杭州萧山闻堰滨江东方海岸
-<!-- + https://github.com/huang12zheng -->
++ https://github.com/huang12zheng
 + 职业技能概述: k8s, flutter, rust, 深度学习, libp2p, substrate, devops
 + 毕业于211学校, 计算数学相关, 有竞赛背景
 
